@@ -31,6 +31,11 @@ class LandingFlowTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Сайты, боты и автоматизация')
 
+    def test_http_csp_does_not_force_https_upgrade(self):
+        response = self.client.get('/')
+
+        self.assertNotIn('upgrade-insecure-requests', response['Content-Security-Policy'])
+
     def test_ajax_lead_submission_creates_lead(self):
         response = self.client.post(
             '/lead/',

@@ -238,8 +238,7 @@ BOT_USER_AGENT_MARKERS = tuple(
     if marker.strip()
 )
 
-CONTENT_SECURITY_POLICY = os.getenv(
-    "CONTENT_SECURITY_POLICY",
+DEFAULT_CONTENT_SECURITY_POLICY = (
     "default-src 'self'; "
     "script-src 'self'; "
     "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; "
@@ -249,9 +248,11 @@ CONTENT_SECURITY_POLICY = os.getenv(
     "frame-ancestors 'none'; "
     "base-uri 'self'; "
     "form-action 'self'; "
-    "object-src 'none'; "
-    "upgrade-insecure-requests",
+    "object-src 'none'"
 )
+if env_bool("DJANGO_CSP_UPGRADE_INSECURE_REQUESTS", SECURE_SSL_REDIRECT):
+    DEFAULT_CONTENT_SECURITY_POLICY += "; upgrade-insecure-requests"
+CONTENT_SECURITY_POLICY = os.getenv("CONTENT_SECURITY_POLICY", DEFAULT_CONTENT_SECURITY_POLICY)
 
 CACHES = {
     "default": {
