@@ -1,0 +1,9 @@
+[submodule "examples/primeri"]
+	path = examples/primeri
+	url = https://github.com/plague40404/primeri.git
+	branch = main
+
+[submodule "examples/primeri-2.0"]
+	path = examples/primeri-2.0
+	url = https://github.com/plague40404/primeri-2.0.git
+	branch = main
