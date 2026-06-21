@@ -141,8 +141,8 @@ CONTACT_PHONE_TEL = os.getenv("CONTACT_PHONE_TEL", "+79991234567")
 TELEGRAM_URL = os.getenv("TELEGRAM_URL", "https://t.me/your_username")
 WHATSAPP_URL = os.getenv("WHATSAPP_URL", "https://wa.me/79991234567")
 
-EXAMPLE_PRIMERI_URL = os.getenv("EXAMPLE_PRIMERI_URL", "https://plague40404.github.io/primeri/")
-EXAMPLE_PRIMERI_2_URL = os.getenv("EXAMPLE_PRIMERI_2_URL", "https://plague40404.github.io/primeri-2.0/")
+EXAMPLE_PRIMERI_URL = os.getenv("EXAMPLE_PRIMERI_URL", "/examples/primeri/")
+EXAMPLE_PRIMERI_2_URL = os.getenv("EXAMPLE_PRIMERI_2_URL", "/examples/primeri-2/")
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
