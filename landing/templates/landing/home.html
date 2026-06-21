@@ -157,11 +157,11 @@
             {% for item in showcase %}
             <article class="showcase-card reveal" data-tilt-card>
                 {% if item.external_url %}
-                <a class="showcase-shot" href="{{ item.external_url }}" target="_blank" rel="noopener" data-track="showcase-external:{{ item.name }}">
+                <a class="showcase-shot" href="{{ item.external_url }}"{% if item.open_in_new_tab %} target="_blank" rel="noopener"{% endif %} data-track="showcase-external:{{ item.name }}">
                     <img src="{% static item.image %}" alt="Скрин живого примера {{ item.name }}" loading="lazy" width="920" height="620">
                 </a>
                 {% else %}
-                <a class="showcase-shot" href="{% url 'showcase-site' item.slug %}" target="_blank" rel="noopener" data-track="showcase:{{ item.name }}">
+                <a class="showcase-shot" href="{% url 'showcase-site' item.slug %}" data-track="showcase:{{ item.name }}">
                     <img src="{% static item.image %}" alt="Скрин сайта {{ item.name }}" loading="lazy" width="920" height="620">
                 </a>
                 {% endif %}
@@ -175,9 +175,9 @@
                         {% endfor %}
                     </div>
                     {% if item.external_url %}
-                    <a class="text-link" href="{{ item.external_url }}" target="_blank" rel="noopener" data-track="showcase-open-external:{{ item.name }}">Открыть живой пример <span>↗</span></a>
+                    <a class="text-link" href="{{ item.external_url }}"{% if item.open_in_new_tab %} target="_blank" rel="noopener"{% endif %} data-track="showcase-open-external:{{ item.name }}">Открыть живой пример <span>↗</span></a>
                     {% else %}
-                    <a class="text-link" href="{% url 'showcase-site' item.slug %}" target="_blank" rel="noopener" data-track="showcase-open:{{ item.name }}">Открыть сайт <span>→</span></a>
+                    <a class="text-link" href="{% url 'showcase-site' item.slug %}" data-track="showcase-open:{{ item.name }}">Открыть сайт <span>→</span></a>
                     {% endif %}
                 </div>
             </article>

@@ -175,12 +175,22 @@ REVIEWS = [
 ]
 
 
+def showcase_items():
+    items = []
+    for item in SHOWCASE:
+        item = {**item}
+        external_url = item.get('external_url') or ''
+        item['open_in_new_tab'] = external_url.startswith(('http://', 'https://', '//'))
+        items.append(item)
+    return items
+
+
 def shared_context(request, form=None):
     return {
         'form': form or LeadForm(initial={'source_path': request.path}),
         'packages': PACKAGES,
         'specials': SPECIALS,
-        'showcase': SHOWCASE,
+        'showcase': showcase_items(),
         'reviews': REVIEWS,
         'phone_reveal_url': reverse('contact-phone'),
         'telegram_url': settings.TELEGRAM_URL,

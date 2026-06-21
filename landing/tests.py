@@ -118,6 +118,15 @@ class LandingFlowTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Brew Corner')
 
+    def test_relative_example_links_use_same_tab(self):
+        response = self.client.get('/')
+        html = response.content.decode()
+
+        self.assertIn('href="/examples/primeri/"', html)
+        self.assertIn('href="/examples/primeri-2/"', html)
+        self.assertNotIn('href="/examples/primeri/" target="_blank"', html)
+        self.assertNotIn('href="/examples/primeri-2/" target="_blank"', html)
+
     def test_dashboard_requires_staff_and_renders_for_admin(self):
         response = self.client.get('/control/')
         self.assertEqual(response.status_code, 302)
