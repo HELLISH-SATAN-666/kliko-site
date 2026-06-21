@@ -70,16 +70,32 @@ Configure secrets and host-specific values through environment variables:
 ```powershell
 $env:DJANGO_SECRET_KEY="change-this"
 $env:DJANGO_DEBUG="0"
-$env:DJANGO_ALLOWED_HOSTS="example.com,www.example.com"
-$env:DJANGO_CSRF_TRUSTED_ORIGINS="https://example.com,https://www.example.com"
+$env:DJANGO_ALLOWED_HOSTS="proforin.online,www.proforin.online,proforin.ru,www.proforin.ru"
+$env:DJANGO_CSRF_TRUSTED_ORIGINS="http://proforin.online,http://www.proforin.online,http://proforin.ru,http://www.proforin.ru,https://proforin.online,https://www.proforin.online,https://proforin.ru,https://www.proforin.ru"
+$env:DJANGO_SECURE_SSL_REDIRECT="0"
+$env:DJANGO_SESSION_COOKIE_SECURE="0"
+$env:DJANGO_CSRF_COOKIE_SECURE="0"
+$env:DJANGO_HSTS_SECONDS="0"
 $env:DJANGO_DB_PATH="/srv/kliko-site/shared/db.sqlite3"
 $env:CONTACT_PHONE_DISPLAY="+7 (000) 000-00-00"
 $env:CONTACT_PHONE_TEL="+70000000000"
-$env:TELEGRAM_URL="https://t.me/username"
+$env:TELEGRAM_URL="https://t.me/kulagingerman"
 $env:WHATSAPP_URL="https://vk.com/username"
 $env:EXAMPLE_PRIMERI_URL="/examples/primeri/"
 $env:EXAMPLE_PRIMERI_2_URL="/examples/primeri-2/"
+$env:TELEGRAM_NOTIFY_ENABLED="1"
+$env:TELEGRAM_BOT_TOKEN="change-this"
+$env:TELEGRAM_ADMIN_USERNAME="@kulagingerman"
 ```
+
+The current VPS deployment keeps the existing VPN on port 443, so the Django site is served on HTTP port 80. To make the domains resolve to this server, point `proforin.online`, `www.proforin.online`, `proforin.ru`, and `www.proforin.ru` to the VPS IPv4 address. Remove unrelated AAAA records unless the VPS has a routed public IPv6 address.
+
+The linked examples are served under the same domains:
+
+- `/examples/primeri/`
+- `/examples/primeri-2/`
+
+For Telegram notifications, start a private chat with the configured bot and send `/start`. If `TELEGRAM_ADMIN_USERNAME` is set, only that username can become the first owner/admin.
 
 Before deployment:
 

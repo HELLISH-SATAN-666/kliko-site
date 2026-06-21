@@ -1,20 +1,20 @@
 [Unit]
-Description=proforin.online Telegram bot worker
-After=network-online.target proforin.service xray.service
-Wants=network-online.target xray.service
+Description=Kliko Telegram bot worker
+After=network-online.target kliko-site.service
+Wants=network-online.target
 
 [Service]
-User=proforin
+User=www-data
 Group=www-data
-WorkingDirectory=/var/www/proforin/app
-EnvironmentFile=/etc/proforin/proforin.env
-ExecStart=/var/www/proforin/venv/bin/python manage.py telegram_bot
+WorkingDirectory=/srv/kliko-site/current
+EnvironmentFile=/etc/kliko-site.env
+ExecStart=/srv/kliko-site/venv/bin/python manage.py telegram_bot
 Restart=always
 RestartSec=5
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full
-ReadWritePaths=/var/www/proforin
+ReadWritePaths=/srv/kliko-site
 ProtectHome=true
 CapabilityBoundingSet=
 

@@ -1,9 +1,11 @@
 import json
+from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
 
 from . import vpn
+from .management.commands.telegram_bot import Command
 from .models import Lead, TelegramAdmin, TrackedEvent, VpnClient
 
 
@@ -145,3 +147,47 @@ class LandingFlowTests(TestCase):
         self.assertTrue(link.endswith('#NOCTALIA'))
         self.assertNotIn(client.name, link)
         self.assertEqual(client.name, 'internal client name')
+
+
+class TelegramBotBootstrapTests(TestCase):
+    def update(self, username, chat_id='123'):
+        return {
+            'update_id': int(chat_id),
+            'message': {
+                'chat': {'id': int(chat_id), 'type': 'private'},
+                'from': {
+                    'id': int(chat_id),
+                    'username': username,
+                    'first_name': 'Admin',
+                },
+                'text': '/start',
+            },
+        }
+
+    @override_settings(TELEGRAM_ADMIN_USERNAME='')
+    def test_first_sender_becomes_owner_when_no_bootstrap_username_is_set(self):
+        command = Command()
+
+        with patch.object(command, 'send_message'):
+            command.handle_update(self.update('first_admin'))
+
+        admin = TelegramAdmin.objects.get(chat_id='123')
+        self.assertTrue(admin.is_active)
+        self.assertTrue(admin.is_owner)
+
+    @override_settings(TELEGRAM_ADMIN_USERNAME='@kulagingerman')
+    def test_bootstrap_username_limits_first_owner(self):
+        command = Command()
+
+        with patch.object(command, 'send_message'):
+            command.handle_update(self.update('other_user'))
+
+        self.assertFalse(TelegramAdmin.objects.filter(is_active=True).exists())
+        self.assertFalse(TelegramAdmin.objects.get(chat_id='123').is_active)
+
+        with patch.object(command, 'send_message'):
+            command.handle_update(self.update('kulagingerman', chat_id='456'))
+
+        admin = TelegramAdmin.objects.get(chat_id='456')
+        self.assertTrue(admin.is_active)
+        self.assertTrue(admin.is_owner)

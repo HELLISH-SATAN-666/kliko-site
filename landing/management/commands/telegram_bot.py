@@ -27,6 +27,10 @@ def timezone_label():
     return time.strftime("%Y%m%d-%H%M%S")
 
 
+def configured_admin_username():
+    return settings.TELEGRAM_ADMIN_USERNAME.strip().lstrip("@").lower()
+
+
 def format_time(value):
     if not value:
         return "без срока"
@@ -110,6 +114,15 @@ class Command(BaseCommand):
 
         admin, _ = self.remember_user(sender, active=False)
         if not TelegramAdmin.objects.filter(is_active=True).exists():
+            allowed_username = configured_admin_username()
+            sender_username = (sender.get("username") or "").lower()
+            if allowed_username and sender_username != allowed_username:
+                self.send_message(
+                    chat["id"],
+                    "Бот подключен, но доступ администратора не выдан. "
+                    "Первым главным админом может стать только владелец, указанный в настройках сайта.",
+                )
+                return
             admin.is_active = True
             admin.is_owner = True
             admin.save(update_fields=["is_active", "is_owner", "updated_at"])
