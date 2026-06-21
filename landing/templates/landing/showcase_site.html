@@ -1,0 +1,103 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <title>{{ item.name }} - пример сайта</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/css/showcase-site.css' %}?v=5">
+    <style>
+        :root {
+            --site-accent: {{ item.accent }};
+            --site-soft: {{ item.soft }};
+            --site-dark: {{ item.dark }};
+        }
+    </style>
+</head>
+<body data-phone-url="{{ phone_reveal_url }}">
+<header class="demo-header">
+    <a href="/" class="demo-brand">{{ item.name }}</a>
+    <nav>
+        <a href="#services">Услуги</a>
+        <a href="#proof">Почему мы</a>
+        <a href="#contact">Заявка</a>
+    </nav>
+    <button class="demo-call" type="button" data-protected-phone data-phone-mode="call">Позвонить</button>
+</header>
+
+<main>
+    <section class="demo-hero">
+        <div>
+            <p class="demo-eyebrow">{{ item.type }}</p>
+            <h1>{{ item.title }}</h1>
+            <p>{{ item.summary }}</p>
+            <div class="demo-actions">
+                <a href="#contact">Оставить заявку</a>
+                <a href="#services">Смотреть услуги</a>
+            </div>
+        </div>
+        <div class="demo-device" aria-label="Превью интерфейса">
+            <div class="device-top"></div>
+            <div class="device-screen">
+                <div class="screen-row wide"></div>
+                <div class="screen-row"></div>
+                <div class="screen-grid">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="screen-card">
+                    <strong>{{ item.name }}</strong>
+                    <small>заявки, услуги, админка</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-services" id="services">
+        <div class="demo-section-title">
+            <p class="demo-eyebrow">Что внутри</p>
+            <h2>Сайт сразу отвечает на главные вопросы клиента</h2>
+        </div>
+        <div class="demo-service-grid">
+            {% for service in item.services %}
+            <article>
+                <span>0{{ forloop.counter }}</span>
+                <h3>{{ service }}</h3>
+                <p>Короткий путь к действию: понять услугу, увидеть выгоду и оставить заявку без лишних шагов.</p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="demo-proof" id="proof">
+        <div>
+            <p class="demo-eyebrow">Результат</p>
+            <h2>Каждый блок работает на доверие и следующий клик</h2>
+            <p>В проект можно добавить формы, уведомления, базу заявок, админку, аналитику и интеграции с привычными инструментами бизнеса.</p>
+        </div>
+        <div class="demo-metrics">
+            {% for metric in item.metrics %}
+            <strong>{{ metric }}</strong>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="demo-contact" id="contact">
+        <div>
+            <p class="demo-eyebrow">Заявка</p>
+            <h2>Оставьте телефон, и администратор свяжется с вами</h2>
+        </div>
+        <form>
+            <input type="text" placeholder="Имя">
+            <input type="tel" placeholder="Телефон">
+            <textarea rows="4" placeholder="Что нужно"></textarea>
+            <button type="button">Отправить заявку</button>
+        </form>
+    </section>
+</main>
+<script src="{% static 'landing/js/app.js' %}?v=20" defer></script>
+</body>
+</html>

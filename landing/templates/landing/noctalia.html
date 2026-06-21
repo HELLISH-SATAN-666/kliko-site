@@ -1,0 +1,181 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>{{ title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/css/noctalia.css' %}?v=2">
+</head>
+<body>
+<main>
+    <section class="hero">
+        <div class="shell hero-grid">
+            <div class="hero-copy">
+                <p class="kicker">Noctalia Access</p>
+                <h1>Подключение NOC в Amnezia</h1>
+                <p class="lead">Установите Amnezia, добавьте личный ключ и включите профиль Noctalia. Вся настройка занимает пару минут.</p>
+                <div class="hero-actions" aria-label="Быстрые ссылки">
+                    <a href="#ios">iPhone</a>
+                    <a href="#android">Android</a>
+                    <a href="#desktop">Компьютер</a>
+                    <a href="#help">Проблемы</a>
+                </div>
+            </div>
+            <div class="signal-panel" aria-label="Схема маршрута">
+                <div class="signal-head">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="signal-map">
+                    <div class="node user">Вы</div>
+                    <div class="beam beam-a"></div>
+                    <div class="node core">Noctalia</div>
+                    <div class="beam beam-b"></div>
+                    <div class="node web">Сеть</div>
+                </div>
+                <div class="status-row">
+                    <span>NOC</span>
+                    <span>KEY</span>
+                    <span>AMZ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shell quick">
+        <article>
+            <span>01</span>
+            <h2>Получите ключ</h2>
+            <p>Администратор пришлет личный ключ одним сообщением. Не пересылайте его другим людям и не публикуйте в открытых чатах.</p>
+        </article>
+        <article>
+            <span>02</span>
+            <h2>Установите Amnezia</h2>
+            <p>Берите приложение только из официального источника или магазина приложений на вашем устройстве.</p>
+        </article>
+        <article>
+            <span>03</span>
+            <h2>Добавьте профиль</h2>
+            <p>Скопируйте ключ, нажмите добавление профиля в Amnezia и выберите импорт из буфера или ручную вставку.</p>
+        </article>
+    </section>
+
+    <section class="shell downloads">
+        <div>
+            <p class="kicker">Чистая установка</p>
+            <h2>Где скачать</h2>
+            <p>Официальная страница Amnezia дает актуальные версии для iOS, Android, Windows, macOS и Linux. Сначала используйте ее, а затем уже магазин приложений на устройстве.</p>
+        </div>
+        <div class="download-actions">
+            <a href="{{ amnezia_download_url }}" target="_blank" rel="noopener">Скачать Amnezia</a>
+        </div>
+    </section>
+
+    <section class="shell device-grid" id="ios">
+        <article class="device">
+            <div class="device-title">
+                <span>iOS</span>
+                <h2>iPhone и iPad</h2>
+            </div>
+            <ol>
+                <li>Откройте официальную страницу установки и перейдите к варианту для iOS.</li>
+                <li>Установите Amnezia и откройте приложение.</li>
+                <li>Скопируйте личный ключ, который выдал администратор.</li>
+                <li>В Amnezia нажмите добавление профиля и выберите импорт из буфера.</li>
+                <li>Разрешите системное добавление профиля, если iOS попросит подтверждение.</li>
+                <li>Включите профиль Noctalia. Статус должен стать активным.</li>
+            </ol>
+        </article>
+
+        <article class="device" id="android">
+            <div class="device-title">
+                <span>Android</span>
+                <h2>Телефон или планшет</h2>
+            </div>
+            <ol>
+                <li>Откройте официальную страницу установки и выберите Android.</li>
+                <li>Установите Amnezia из магазина приложений или другим официальным способом.</li>
+                <li>Скопируйте личный ключ, который выдал администратор.</li>
+                <li>В Amnezia нажмите добавление профиля и выберите импорт из буфера.</li>
+                <li>Подтвердите системный запрос на создание защищенного маршрута.</li>
+                <li>Если Android ограничивает работу в фоне, разрешите Amnezia работать без экономии батареи.</li>
+            </ol>
+        </article>
+
+        <article class="device" id="desktop">
+            <div class="device-title">
+                <span>Windows</span>
+                <h2>Windows 10/11</h2>
+            </div>
+            <ol>
+                <li>Скачайте установщик Amnezia для Windows с официальной страницы.</li>
+                <li>Установите приложение и запустите его.</li>
+                <li>Скопируйте личный ключ, который выдал администратор.</li>
+                <li>Добавьте новый профиль через импорт из буфера или ручную вставку.</li>
+                <li>Включите профиль Noctalia. Если страницы не открываются, запустите Amnezia от имени администратора.</li>
+            </ol>
+        </article>
+
+        <article class="device">
+            <div class="device-title">
+                <span>macOS</span>
+                <h2>MacBook и iMac</h2>
+            </div>
+            <ol>
+                <li>Скачайте Amnezia для macOS с официальной страницы.</li>
+                <li>Перетащите приложение в папку Applications.</li>
+                <li>Если macOS предупреждает о приложении, откройте его через правый клик и пункт Open.</li>
+                <li>Импортируйте личный ключ из буфера обмена.</li>
+                <li>Разрешите создание системного профиля в настройках, если macOS попросит подтверждение.</li>
+            </ol>
+        </article>
+
+        <article class="device">
+            <div class="device-title">
+                <span>Linux</span>
+                <h2>Ubuntu, Debian, Mint</h2>
+            </div>
+            <ol>
+                <li>Скачайте Linux-версию Amnezia с официальной страницы.</li>
+                <li>Откройте загруженный файл тем способом, который предлагает ваш дистрибутив.</li>
+                <li>Если система просит разрешение на запуск, подтвердите его только для скачанного файла.</li>
+                <li>Откройте Amnezia и импортируйте личный ключ.</li>
+                <li>При запросе прав администратора подтвердите действие, чтобы профиль смог работать на уровне системы.</li>
+            </ol>
+        </article>
+
+        <article class="device">
+            <div class="device-title">
+                <span>Общее</span>
+                <h2>Как понять, что все включено</h2>
+            </div>
+            <ol>
+                <li>В Amnezia выбран ваш профиль Noctalia.</li>
+                <li>Статус связи активен.</li>
+                <li>Страницы открываются без ошибок, а адрес сети отличается от обычного.</li>
+                <li>Если профиль перестал работать, запросите у администратора новый ключ.</li>
+            </ol>
+        </article>
+    </section>
+
+    <section class="shell help" id="help">
+        <div>
+            <p class="kicker">Если не включается</p>
+            <h2>Быстрый чек-лист</h2>
+        </div>
+        <ul>
+            <li>Проверьте, что ключ скопирован целиком, без лишних пробелов в начале и конце.</li>
+            <li>Обновите Amnezia до последней версии.</li>
+            <li>Проверьте дату и время на устройстве, включите автоматическую синхронизацию.</li>
+            <li>Попробуйте другую сеть: Wi-Fi вместо мобильной сети или наоборот.</li>
+            <li>Удалите старый профиль и импортируйте ключ заново.</li>
+            <li>Не передавайте ключ другим людям: при подозрении на утечку он может быть перевыпущен.</li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

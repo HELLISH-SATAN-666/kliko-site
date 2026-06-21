@@ -1,0 +1,367 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Сайты, боты, скрипты и автоматизация для бизнеса. Быстрый запуск, заявки в админку, аналитика кликов и простая связь.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://proforin.online/">
+    <meta property="og:title" content="Kliko | сайты, боты и автоматизация">
+    <meta property="og:description" content="Сайты, боты, скрипты и автоматизация для бизнеса. Быстрый запуск, заявки, аналитика и интеграции.">
+    <meta property="og:url" content="https://proforin.online/">
+    <meta property="og:type" content="website">
+    <title>Kliko | сайты, боты и автоматизация</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="{% static 'landing/img/hero-reference.png' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}?v=24">
+    <link rel="icon" href="{% static 'landing/img/LOGO.png' %}">
+</head>
+<body data-track-url="{% url 'track-event' %}" data-phone-url="{{ phone_reveal_url }}">
+<div class="page-noise" aria-hidden="true"></div>
+<div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
+
+<header class="site-header">
+    <a class="brand" href="#top" data-track="nav:logo">
+        <span class="brand-mark">            <img src="{% static 'landing/img/LOGO.png' %}" alt="Визуальная концепция сайта на ноутбуке" width="auto" height="auto" fetchpriority="high">
+</span>
+
+        <span>
+            <strong>Kliko</strong>
+            <small>Сайты, боты, скрипты</small>
+        </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span>
+    </button>
+    <nav class="site-nav" data-nav>
+        <a href="#workflow" data-track="nav:workflow">Этапы</a>
+        <a href="#showcase" data-track="nav:showcase">Витрина</a>
+        <a href="#packages" data-track="nav:packages">Пакеты</a>
+        <a href="#automation" data-track="nav:automation">Автоматизация</a>
+        <a href="#reviews" data-track="nav:reviews">Отзывы</a>
+    </nav>
+    <div class="header-actions">
+        <button class="header-phone" type="button" data-protected-phone data-phone-mode="call" data-track="call:header" data-event-type="call">Позвонить</button>
+        <a class="header-cta" href="#contact" data-track="cta:header" data-event-type="form_open">Оставить заявку</a>
+    </div>
+</header>
+
+<main id="top">
+    <section class="hero section-shell">
+        <div class="hero-copy reveal">
+            <p class="eyebrow">Для бизнеса, которому нужны заявки и порядок</p>
+            <h1>ВРЕМЯ ВЫХОДИТЬ<br>В ОНЛАЙН!</h1>
+            <p class="hero-lead">
+                Сайты, боты и автоматизация, которые удерживают клиента до заявки. Я собираю рабочую связку под вашу нишу: сайт, форма, админка, бот, интеграции и понятная статистика.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#contact" data-track="cta:hero-primary" data-event-type="form_open">Оставить задачу <span>→</span></a>
+                <a class="btn btn-soft" href="#showcase" data-track="cta:hero-showcase">Смотреть витрину</a>
+            </div>
+            <div class="proof-row" aria-label="Ключевые преимущества">
+                <div><strong>3-9 дней</strong><span>до запуска</span></div>
+                <div><strong>24/7</strong><span>принимаю заявки</span></div>
+                <div><strong>Любая сложность</strong><span>сайты, боты, админка</span></div>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal" data-tilt-card>
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <img src="{% static 'landing/img/img.png' %}" alt="Визуальная концепция сайта на ноутбуке" width="auto" height="auto" fetchpriority="high">
+            <div class="metric-card card-a">
+                <small>ЗАЯВКИ</small>
+                <strong>+31%</strong>
+                <span>после запуска сайта и рекламы</span>
+            </div>
+            <div class="metric-card card-b">
+                <small>РУТИНА</small>
+                <strong>-22 ч</strong>
+                <span>в неделю на ручных действиях</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-strip section-shell reveal" aria-label="Примеры ниш">
+        <div class="logo-track">
+            <span>Кофейни</span>
+            <span>Салоны</span>
+            <span>Стоматологии</span>
+            <span>Доставка</span>
+            <span>Ремонт</span>
+            <span>Обучение</span>
+            <span>Сервисы</span>
+            <span class="mobile-copy" aria-hidden="true">Кофейни</span>
+            <span class="mobile-copy" aria-hidden="true">Салоны</span>
+            <span class="mobile-copy" aria-hidden="true">Стоматологии</span>
+            <span class="mobile-copy" aria-hidden="true">Доставка</span>
+            <span class="mobile-copy" aria-hidden="true">Ремонт</span>
+            <span class="mobile-copy" aria-hidden="true">Обучение</span>
+            <span class="mobile-copy" aria-hidden="true">Сервисы</span>
+        </div>
+    </section>
+
+    <section class="pain-grid section-shell">
+        <div class="section-intro reveal">
+            <p class="eyebrow">Почему сайт должен продавать</p>
+            <h2>Клиент не должен искать, что вы делаете и куда нажать</h2>
+            <p>Хороший сайт быстро собирает доверие, показывает понятную выгоду и оставляет человеку простой следующий шаг: написать, позвонить или оставить задачу.</p>
+        </div>
+        <div class="gain-list reveal">
+            <article>
+                <span class="icon-dot"></span>
+                <h3>Понятный оффер</h3>
+                <p>На первом экране видно, кому подходит услуга, что вы получите и почему это стоит обсудить сейчас.</p>
+            </article>
+            <article>
+                <span class="icon-dot"></span>
+                <h3>Никакой ручной работы!</h3>
+                <p>Заявки, уведомления, таблицы, статусы и повторные действия можно связать в одну цепочку.</p>
+            </article>
+            <article>
+                <span class="icon-dot"></span>
+                <h3>Контроль действий</h3>
+                <p>В админке видно посещения, заявки, выбранные пакеты и кнопки, на которые нажимали посетители.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="workflow section-shell" id="workflow">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Этапы</p>
+                <h2>Под ключ или индивидуальная разработка</h2>
+            </div>
+            <p>На каждом этапе понятно, что будет готово и как это приблизит заявку.</p>
+        </div>
+        <div class="timeline reveal">
+            <article><span>01</span><h3>Заявка</h3><p>Принимаю вашу заявку, согласуем пакет</p></article>
+            <article><span>02</span><h3>Сценарий</h3><p>Собираю структуру сайта, форму, события, бота или логику скрипта.</p></article>
+            <article><span>03</span><h3>Разработка</h3><p>Делаю адаптивный интерфейс, базу данных, админку, интеграции и аналитику.</p></article>
+            <article><span>04</span><h3>Запуск</h3><p>Подключаем домен, тестируем заявки, смотрим первые клики и докручиваем слабые места.</p></article>
+        </div>
+    </section>
+
+    <section class="showcase section-shell" id="showcase">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Витрина</p>
+                <h2>Шаблоны сайтов, которые можно сделать под ключ</h2>
+            </div>
+            <p>Псс... Секретный промокод на скидку 15% - "СТАРТ"...</p>
+        </div>
+        <div class="showcase-grid">
+            {% for item in showcase %}
+            <article class="showcase-card reveal" data-tilt-card>
+                {% if item.external_url %}
+                <a class="showcase-shot" href="{{ item.external_url }}" target="_blank" rel="noopener" data-track="showcase-external:{{ item.name }}">
+                    <img src="{% static item.image %}" alt="Скрин живого примера {{ item.name }}" loading="lazy" width="920" height="620">
+                </a>
+                {% else %}
+                <a class="showcase-shot" href="{% url 'showcase-site' item.slug %}" target="_blank" rel="noopener" data-track="showcase:{{ item.name }}">
+                    <img src="{% static item.image %}" alt="Скрин сайта {{ item.name }}" loading="lazy" width="920" height="620">
+                </a>
+                {% endif %}
+                <div class="showcase-body">
+                    <span>{{ item.type }}</span>
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.summary }}</p>
+                    <div class="showcase-meta">
+                        {% for metric in item.metrics %}
+                        <small>{{ metric }}</small>
+                        {% endfor %}
+                    </div>
+                    {% if item.external_url %}
+                    <a class="text-link" href="{{ item.external_url }}" target="_blank" rel="noopener" data-track="showcase-open-external:{{ item.name }}">Открыть живой пример <span>↗</span></a>
+                    {% else %}
+                    <a class="text-link" href="{% url 'showcase-site' item.slug %}" target="_blank" rel="noopener" data-track="showcase-open:{{ item.name }}">Открыть сайт <span>→</span></a>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="packages section-shell" id="packages">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">3 основных пакета</p>
+                <h2>Пакеты, которые удобно объяснять по телефону</h2>
+            </div>
+            <p>Можно начать с простого сайта, отдельной автоматизации или сразу собрать связку под ключ.</p>
+        </div>
+        <div class="package-grid">
+            {% for pkg in packages %}
+            <article class="package-card reveal {% if forloop.counter == 2 %}featured{% endif %}" data-tilt-card>
+                <div class="package-top">
+                    <span>{{ pkg.tag }}</span>
+                    <strong>{{ pkg.term }}</strong>
+                </div>
+                <h3>{{ pkg.title }}</h3>
+                <p>{{ pkg.summary }}</p>
+                <div class="price">{{ pkg.price }}</div>
+                <ul>
+                    {% for item in pkg.items %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                <a class="btn btn-card" href="#contact" data-package="{{ pkg.id }}" data-track="package:{{ pkg.title }}" data-event-type="package">Обсудить пакет <span>→</span></a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="automation section-shell" id="automation">
+        <div class="automation-panel reveal">
+            <div>
+                <p class="eyebrow">Частные задачи</p>
+                <h2>Иногда нужен не весь сайт, а точный механизм, который закрывает одну задачу</h2>
+            </div>
+            <div class="special-grid">
+                {% for title, text in specials %}
+                <article data-track="special:{{ title }}" data-tilt-card>
+                    <h3>{{ title }}</h3>
+                    <p>{{ text }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="conversion section-shell">
+        <div class="conversion-copy reveal">
+            <p class="eyebrow">Сайт удерживает клиента</p>
+            <h2>Он не отпускает посетителя, а мягко ведет к следующему действию</h2>
+            <ul class="check-list">
+                <li>сразу показывает, что будет готово и за какой срок;</li>
+                <li>снимает тревогу через примеры, этапы, цифры и понятный процесс;</li>
+                <li>дает короткую форму без лишней анкеты;</li>
+                <li>фиксирует клики по пакетам, витрине, звонку и мессенджерам;</li>
+                <li>сохраняет заявку в базе, чтобы ее не потеряли после звонка.</li>
+            </ul>
+        </div>
+        <div class="conversion-card reveal" data-tilt-card>
+            <div class="mini-dashboard">
+                <div><span>Сегодня</span><strong>65</strong><small>посещений</small></div>
+                <div><span>Пакет</span><strong>14</strong><small>выбрали автоматизацию</small></div>
+                <div><span>Лиды</span><strong>11</strong><small>новых заявок</small></div>
+            </div>
+            <p>Такая же статистика будет копиться в вашей админке автоматически: визиты, заявки, клики, выбранные пакеты и время входа.</p>
+        </div>
+    </section>
+
+    <section class="reviews section-shell" id="reviews">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Отзывы</p>
+                <h2>Что ценят люди</h2>
+            </div>
+            <p>Реальные отзывы о сотрудничестве</p>
+        </div>
+        <div class="review-grid">
+            {% for review in reviews %}
+            <article class="review-card reveal" data-tilt-card>
+                <div class="review-head">
+                    <strong>{{ review.company }}</strong>
+                    <span>{{ review.metric }}</span>
+                </div>
+                <p>"{{ review.text }}"</p>
+                <small>{{ review.person }}</small>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="faq section-shell">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Перед заявкой</p>
+                <h2>Коротко на частые вопросы</h2>
+            </div>
+        </div>
+        <div class="faq-grid reveal">
+            <details open>
+                <summary>Оставлять ли заявку если еще не уверен?</summary>
+                <p>Конечно. Обсудим что можно внедрить в ваш бизнес так, чтоб это принесло максимум пользы</p>
+            </details>
+            <details>
+                <summary>Что будет после заявки?</summary>
+                <p>Я свяжусь, задам несколько вопросов и предложу подходящие варианты: сайт, бот, скрипт или связку из нескольких инструментов.</p>
+            </details>
+            <details>
+                <summary>Можно подключить мой домен и хостинг?</summary>
+                <p>Да. Проект подготовлен так, чтобы его можно было развернуть на обычном хостинге с Python/Django или перенести на VPS.</p>
+            </details>
+            <details>
+                <summary>Можно доработать уже существующий сайт?</summary>
+                <p>Да. Если основа нормальная, дешевле усилить текущий сайт: формы, скорость, адаптив, тексты, аналитику и автоматизацию заявок.</p>
+            </details>
+        </div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+        <div class="contact-panel reveal">
+            <div class="contact-copy">
+                <p class="eyebrow">ОСТАВИТЬ ЗАЯВКУ</p>
+                <h2>Напишите имя, телефон и задачу. Этого достаточно, чтобы начать</h2>
+                <p>Я уточню детали на коротком созвоне и предложу варианты внедрения</p>
+                <div class="contact-links">
+                    <button type="button" data-protected-phone data-phone-mode="reveal" data-track="call:contact" data-event-type="call">Показать телефон</button>
+                    <a href="{{ telegram_url }}" target="_blank" rel="noopener" data-track="messenger:telegram" data-event-type="messenger">Telegram</a>
+                    <a href="{{ whatsapp_url }}" target="_blank" rel="noopener" data-track="messenger:whatsapp" data-event-type="messenger">ВКонтакте</a>
+                </div>
+            </div>
+            <form class="lead-form" action="{% url 'submit-lead' %}" method="post" data-lead-form>
+                {% csrf_token %}
+                {{ form.form_token }}
+                <input type="hidden" name="source_path" value="{{ request.path }}">
+                <input type="hidden" name="package" value="consult" data-package-input>
+                <div class="honeypot" aria-hidden="true">
+                    <label>Сайт<input name="website" type="text" autocomplete="off" tabindex="-1"></label>
+                </div>
+                <div class="form-status" data-form-status hidden></div>
+                <label>
+                    <span>Имя</span>
+                    <input name="name" type="text" autocomplete="name" placeholder="Например, Герман" required>
+                </label>
+                <label>
+                    <span>Телефон или юзернейм</span>
+                    <input name="phone" type="text" inputmode="text" autocomplete="username" placeholder="+7 913 898-93-55, @kulagingerman" required>
+                </label>
+                <label>
+                    <span>Задача</span>
+                    <textarea name="message" rows="5" placeholder="Нужен сайт для ресторана, бот для записи или автоматизация заявок" required></textarea>
+                </label>
+                <button class="btn btn-primary form-submit" type="submit" data-track="form:submit">Получить план запуска <span>→</span></button>
+                <small class="form-note">Protectet by Noctalia.</small>
+            </form>
+        </div>
+    </section>
+</main>
+
+<div class="sticky-cta">
+    <a href="#contact" data-track="sticky:request" data-event-type="form_open">Заявка</a>
+    <button type="button" data-protected-phone data-phone-mode="call" data-track="sticky:call" data-event-type="call">Позвонить</button>
+</div>
+
+<footer class="site-footer section-shell">
+    <div>
+        <strong>Kliko</strong>
+        <span>Сайты, боты, скрипты и автоматизация для вашего бизнеса.</span>
+    </div>
+</footer>
+<!--
+<div class="lead-nudge" data-nudge hidden>
+    <button type="button" aria-label="Закрыть" data-nudge-close>×</button>
+    <strong>Быстрая оценка</strong>
+    <p>Киньте задачу, я скажу короткий путь запуска.</p>
+    <a href="#contact" data-track="nudge:cta" data-event-type="form_open">Оставить задачу →</a>
+</div>
+ -->
+<script src="{% static 'landing/js/app.js' %}?v=24" defer></script>
+</body>
+</html>
+

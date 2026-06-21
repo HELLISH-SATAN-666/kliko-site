@@ -1,0 +1,31 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,follow">
+    <title>Заявка отправлена - Kliko</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}?v=24">
+</head>
+<body class="thanks-page" data-phone-url="{{ phone_reveal_url }}">
+<main class="thanks-wrap">
+    <div class="thanks-card">
+        <span class="brand-mark">K</span>
+        <p class="eyebrow">Заявка сохранена</p>
+        <h1>Спасибо. Я скоро свяжусь и предложу самый короткий путь запуска.</h1>
+        <p>Если задача срочная, можно сразу позвонить или написать в Telegram.</p>
+        <div class="hero-actions">
+            <button class="btn btn-primary" type="button" data-protected-phone data-phone-mode="call">Позвонить</button>
+            <a class="btn btn-soft" href="{{ telegram_url }}" target="_blank" rel="noopener">Telegram</a>
+        </div>
+        <a class="back-link" href="/">Вернуться на сайт</a>
+    </div>
+</main>
+<script src="{% static 'landing/js/app.js' %}?v=24" defer></script>
+</body>
+</html>
+

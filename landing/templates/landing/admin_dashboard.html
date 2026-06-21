@@ -1,0 +1,147 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} - Kliko</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}?v=24">
+</head>
+<body class="dashboard-page">
+<header class="dashboard-header">
+    <div>
+        <p class="eyebrow">Админка</p>
+        <h1>Статистика сайта</h1>
+        <span>Обновлено: {{ now|date:"d.m.Y H:i" }}</span>
+    </div>
+    <nav>
+        <a href="/" target="_blank">Сайт</a>
+        <a href="{{ admin_base_url }}landing/lead/">Заявки</a>
+        <a href="{{ admin_base_url }}landing/visit/">Визиты</a>
+        <a href="{{ admin_base_url }}landing/trackedevent/">Клики</a>
+        <a href="{{ admin_base_url }}">Django admin</a>
+    </nav>
+</header>
+
+<main class="dashboard-shell">
+    <section class="stat-grid">
+        <article><span>Визиты всего</span><strong>{{ visits_total }}</strong><small>сегодня: {{ visits_today }}</small></article>
+        <article><span>Заявки всего</span><strong>{{ leads_total }}</strong><small>сегодня: {{ leads_today }}</small></article>
+        <article><span>Конверсия</span><strong>{{ conversion }}%</strong><small>заявки / визиты</small></article>
+        <article><span>События</span><strong>{{ events_total }}</strong><small>клики, формы, звонки</small></article>
+    </section>
+
+    <section class="dashboard-card">
+        <div class="dashboard-title">
+            <h2>Посещения за 14 дней</h2>
+            <span>по дням</span>
+        </div>
+        <div class="bar-chart" aria-label="График посещений">
+            {% for day in chart_days %}
+            <div class="bar-item">
+                <span class="bar" style="height: {{ day.height }}%"></span>
+                <strong>{{ day.count }}</strong>
+                <small>{{ day.label }}</small>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="dashboard-columns">
+        <section class="dashboard-card">
+            <div class="dashboard-title">
+                <h2>Последние заявки</h2>
+                <a href="{{ admin_base_url }}landing/lead/">все</a>
+            </div>
+            <div class="table-list">
+                {% for lead in recent_leads %}
+                <a href="{{ admin_base_url }}landing/lead/{{ lead.id }}/change/">
+                    <span>{{ lead.created_at|date:"d.m H:i" }}</span>
+                    <strong>{{ lead.name }}</strong>
+                    <small>{{ lead.get_package_display }} · {{ lead.phone }}</small>
+                </a>
+                {% empty %}
+                <p class="empty-state">Заявок пока нет. После отправки формы они появятся здесь.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="dashboard-card">
+            <div class="dashboard-title">
+                <h2>Клики и действия</h2>
+                <a href="{{ admin_base_url }}landing/trackedevent/">все</a>
+            </div>
+            <div class="table-list compact">
+                {% for event in recent_events %}
+                <a href="{{ admin_base_url }}landing/trackedevent/{{ event.id }}/change/">
+                    <span>{{ event.created_at|date:"d.m H:i" }}</span>
+                    <strong>{{ event.get_event_type_display }}</strong>
+                    <small>{{ event.label|default:event.path }}</small>
+                </a>
+                {% empty %}
+                <p class="empty-state">Кликов пока нет.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <div class="dashboard-columns">
+        <section class="dashboard-card">
+            <div class="dashboard-title">
+                <h2>Топ элементов</h2>
+                <span>по кликам</span>
+            </div>
+            <div class="rank-list">
+                {% for item in top_clicks %}
+                <div>
+                    <span>{{ item.label }}</span>
+                    <strong>{{ item.count }}</strong>
+                </div>
+                {% empty %}
+                <p class="empty-state">Данные появятся после первых действий на сайте.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="dashboard-card">
+            <div class="dashboard-title">
+                <h2>Спрос по пакетам</h2>
+                <span>из заявок</span>
+            </div>
+            <div class="rank-list">
+                {% for package in packages %}
+                <div>
+                    <span>{{ package.label }}</span>
+                    <strong>{{ package.count }}</strong>
+                </div>
+                {% empty %}
+                <p class="empty-state">Пока нет заявок с выбранными пакетами.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <section class="dashboard-card">
+        <div class="dashboard-title">
+            <h2>Последние визиты</h2>
+            <a href="{{ admin_base_url }}landing/visit/">все</a>
+        </div>
+        <div class="visit-list">
+            {% for visit in recent_visits %}
+            <div>
+                <strong>{{ visit.started_at|date:"d.m.Y H:i" }}</strong>
+                <span>{{ visit.path }}</span>
+                <small>{{ visit.device_type }} · {{ visit.ip_address|default:"IP не определен" }}</small>
+            </div>
+            {% empty %}
+            <p class="empty-state">Визитов пока нет.</p>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+</body>
+</html>
+

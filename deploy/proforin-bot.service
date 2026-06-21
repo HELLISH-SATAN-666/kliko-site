@@ -1,0 +1,22 @@
+[Unit]
+Description=proforin.online Telegram bot worker
+After=network-online.target proforin.service xray.service
+Wants=network-online.target xray.service
+
+[Service]
+User=proforin
+Group=www-data
+WorkingDirectory=/var/www/proforin/app
+EnvironmentFile=/etc/proforin/proforin.env
+ExecStart=/var/www/proforin/venv/bin/python manage.py telegram_bot
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/www/proforin
+ProtectHome=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

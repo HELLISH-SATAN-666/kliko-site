@@ -76,6 +76,8 @@ $env:CONTACT_PHONE_DISPLAY="+7 (000) 000-00-00"
 $env:CONTACT_PHONE_TEL="+70000000000"
 $env:TELEGRAM_URL="https://t.me/username"
 $env:WHATSAPP_URL="https://vk.com/username"
+$env:EXAMPLE_PRIMERI_URL="https://primeri.proforin.online/"
+$env:EXAMPLE_PRIMERI_2_URL="https://primeri-2.proforin.online/"
 ```
 
 Before deployment:
