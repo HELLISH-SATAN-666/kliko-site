@@ -73,14 +73,15 @@ class LandingFlowTests(TestCase):
         response = self.client.get('/')
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, '+7 (999) 123-45-67')
-        self.assertNotContains(response, 'tel:+79991234567')
+        self.assertNotContains(response, '+7 913 898 93 55')
+        self.assertNotContains(response, 'tel:+79138989355')
 
         response = self.client.post('/contact-phone/', HTTP_X_REQUESTED_WITH='XMLHttpRequest')
 
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.json()['ok'])
-        self.assertEqual(response.json()['tel_href'], 'tel:+79991234567')
+        self.assertEqual(response.json()['display'], '+7 913 898 93 55')
+        self.assertEqual(response.json()['tel_href'], 'tel:+79138989355')
 
     def test_sitemap_and_robots_are_available(self):
         robots = self.client.get('/robots.txt')
@@ -90,7 +91,7 @@ class LandingFlowTests(TestCase):
         self.assertContains(robots, 'Sitemap:')
         self.assertContains(robots, 'Disallow: /control/')
         self.assertEqual(sitemap.status_code, 200)
-        self.assertContains(sitemap, '/showcase/coffee/')
+        self.assertContains(sitemap, '/showcase/repair/')
 
     def test_first_telegram_sender_becomes_admin(self):
         admin, _ = TelegramAdmin.objects.get_or_create(
@@ -118,12 +119,12 @@ class LandingFlowTests(TestCase):
         self.assertEqual(TrackedEvent.objects.filter(label='cta:test').count(), 1)
 
     def test_showcase_site_loads(self):
-        response = self.client.get('/showcase/coffee/')
+        response = self.client.get('/showcase/repair/')
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Brew Corner')
+        self.assertContains(response, 'FixLab')
 
-    def test_relative_example_links_use_same_tab(self):
+    def test_existing_first_two_showcase_cards_link_to_real_examples(self):
         response = self.client.get('/')
         html = response.content.decode()
 
@@ -131,6 +132,13 @@ class LandingFlowTests(TestCase):
         self.assertIn('href="/examples/primeri-2/"', html)
         self.assertNotIn('href="/examples/primeri/" target="_blank"', html)
         self.assertNotIn('href="/examples/primeri-2/" target="_blank"', html)
+        self.assertIn('Brew Corner', html)
+        self.assertIn('Luma Beauty', html)
+        self.assertNotIn('Brew Atelier', html)
+        self.assertNotIn('eclat beauty', html)
+
+        self.assertEqual(self.client.get('/showcase/coffee/').headers['Location'], '/examples/primeri/')
+        self.assertEqual(self.client.get('/showcase/beauty/').headers['Location'], '/examples/primeri-2/')
 
     def test_dashboard_requires_staff_and_renders_for_admin(self):
         response = self.client.get('/control/')

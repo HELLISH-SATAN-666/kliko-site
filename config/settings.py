@@ -138,8 +138,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ADMIN_URL = os.getenv("DJANGO_ADMIN_URL", "admin/").strip("/") + "/"
 LOGIN_URL = f"/{ADMIN_URL}login/"
 
-CONTACT_PHONE_DISPLAY = os.getenv("CONTACT_PHONE_DISPLAY", "+7 (999) 123-45-67")
-CONTACT_PHONE_TEL = os.getenv("CONTACT_PHONE_TEL", "+79991234567")
+CONTACT_PHONE_DISPLAY = os.getenv("CONTACT_PHONE_DISPLAY", "+7 913 898 93 55")
+CONTACT_PHONE_TEL = os.getenv("CONTACT_PHONE_TEL", "+79138989355")
 TELEGRAM_URL = os.getenv("TELEGRAM_URL", "https://t.me/your_username")
 WHATSAPP_URL = os.getenv("WHATSAPP_URL", "https://wa.me/79991234567")
 
