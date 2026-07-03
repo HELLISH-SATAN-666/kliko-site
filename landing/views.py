@@ -118,6 +118,8 @@ SHOWCASE = [
         'image': 'landing/img/pr3_2.png',
         'services': ['Калькулятор', 'До и после', 'Статусы', 'CRM'],
         'metrics': ['никаких ручных уточнений', '4 статуса заявки', 'отчет по кликам'],
+        'external_url': settings.EXAMPLE_PRIMERI_3_URL,
+        'source_repo': 'https://github.com/plague40404/primeri3.0.1',
     },
 ]
 

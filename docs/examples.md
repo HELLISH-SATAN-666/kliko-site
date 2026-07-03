@@ -6,6 +6,7 @@ The invited repositories are treated as external example sources for the Kliko s
 | --- | --- | --- |
 | `examples/primeri` | `https://github.com/plague40404/primeri` | Static example site/reference design |
 | `examples/primeri-2.0` | `https://github.com/plague40404/primeri-2.0` | Expanded example site/reference design |
+| `examples/primeri3.0.1` | `https://github.com/plague40404/primeri3.0.1` | Repair/building services example site |
 
 ## Recommended Workflow
 
@@ -18,5 +19,6 @@ In production the examples are served under the main domain:
 
 - `/examples/primeri/`
 - `/examples/primeri-2/`
+- `/examples/primeri-3/`
 
 This keeps the professional site clean while preserving the history of each example project.

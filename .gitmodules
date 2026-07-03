@@ -7,3 +7,8 @@
 	path = examples/primeri-2.0
 	url = https://github.com/plague40404/primeri-2.0.git
 	branch = main
+
+[submodule "examples/primeri3.0.1"]
+	path = examples/primeri3.0.1
+	url = https://github.com/plague40404/primeri3.0.1.git
+	branch = main

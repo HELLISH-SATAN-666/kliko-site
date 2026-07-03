@@ -145,6 +145,7 @@ WHATSAPP_URL = os.getenv("WHATSAPP_URL", "https://wa.me/79991234567")
 
 EXAMPLE_PRIMERI_URL = os.getenv("EXAMPLE_PRIMERI_URL", "/examples/primeri/")
 EXAMPLE_PRIMERI_2_URL = os.getenv("EXAMPLE_PRIMERI_2_URL", "/examples/primeri-2/")
+EXAMPLE_PRIMERI_3_URL = os.getenv("EXAMPLE_PRIMERI_3_URL", "/examples/primeri-3/")
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")

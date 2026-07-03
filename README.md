@@ -30,6 +30,7 @@ The repository is connected to two external example projects as Git submodules:
 
 - `examples/primeri` -> `https://github.com/plague40404/primeri`
 - `examples/primeri-2.0` -> `https://github.com/plague40404/primeri-2.0`
+- `examples/primeri3.0.1` -> `https://github.com/plague40404/primeri3.0.1`
 
 Use them as source references for future showcase pages. They are linked instead of copied so their history and updates stay separate from the main Kliko site.
 
@@ -84,6 +85,7 @@ $env:TELEGRAM_URL="https://t.me/kulagingerman"
 $env:WHATSAPP_URL="https://vk.com/username"
 $env:EXAMPLE_PRIMERI_URL="/examples/primeri/"
 $env:EXAMPLE_PRIMERI_2_URL="/examples/primeri-2/"
+$env:EXAMPLE_PRIMERI_3_URL="/examples/primeri-3/"
 $env:TELEGRAM_NOTIFY_ENABLED="1"
 $env:TELEGRAM_BOT_TOKEN="change-this"
 $env:TELEGRAM_ADMIN_USERNAME="@kulagingerman"
@@ -95,6 +97,7 @@ The linked examples are served under the same domains:
 
 - `/examples/primeri/`
 - `/examples/primeri-2/`
+- `/examples/primeri-3/`
 
 For Telegram notifications, start a private chat with the configured bot and send `/start`. If `TELEGRAM_ADMIN_USERNAME` is set, only that username can become the first owner/admin.
 

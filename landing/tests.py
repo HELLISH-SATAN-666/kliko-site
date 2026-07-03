@@ -91,7 +91,7 @@ class LandingFlowTests(TestCase):
         self.assertContains(robots, 'Sitemap:')
         self.assertContains(robots, 'Disallow: /control/')
         self.assertEqual(sitemap.status_code, 200)
-        self.assertContains(sitemap, '/showcase/repair/')
+        self.assertNotContains(sitemap, '/showcase/')
 
     def test_first_telegram_sender_becomes_admin(self):
         admin, _ = TelegramAdmin.objects.get_or_create(
@@ -118,27 +118,31 @@ class LandingFlowTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(TrackedEvent.objects.filter(label='cta:test').count(), 1)
 
-    def test_showcase_site_loads(self):
+    def test_showcase_routes_redirect_to_real_examples(self):
         response = self.client.get('/showcase/repair/')
 
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'FixLab')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers['Location'], '/examples/primeri-3/')
 
-    def test_existing_first_two_showcase_cards_link_to_real_examples(self):
+    def test_existing_showcase_cards_link_to_real_examples(self):
         response = self.client.get('/')
         html = response.content.decode()
 
         self.assertIn('href="/examples/primeri/"', html)
         self.assertIn('href="/examples/primeri-2/"', html)
+        self.assertIn('href="/examples/primeri-3/"', html)
         self.assertNotIn('href="/examples/primeri/" target="_blank"', html)
         self.assertNotIn('href="/examples/primeri-2/" target="_blank"', html)
+        self.assertNotIn('href="/examples/primeri-3/" target="_blank"', html)
         self.assertIn('Brew Corner', html)
         self.assertIn('Luma Beauty', html)
+        self.assertIn('FixLab', html)
         self.assertNotIn('Brew Atelier', html)
         self.assertNotIn('eclat beauty', html)
 
         self.assertEqual(self.client.get('/showcase/coffee/').headers['Location'], '/examples/primeri/')
         self.assertEqual(self.client.get('/showcase/beauty/').headers['Location'], '/examples/primeri-2/')
+        self.assertEqual(self.client.get('/showcase/repair/').headers['Location'], '/examples/primeri-3/')
 
     def test_dashboard_requires_staff_and_renders_for_admin(self):
         response = self.client.get('/control/')
