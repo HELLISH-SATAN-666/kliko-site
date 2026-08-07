@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 export default function ArticlesPage() {
   return (
     <InnerPage
-      eyebrow="Статьи"
       title="Материалы о продуктах, технологиях и работе команд"
       description="Раздел для практических статей, разборов и новостей KLIKO. Названия, авторы, даты и обложки пока заменены понятными заглушками."
       visualLabel="Место для обложки главного материала"
@@ -21,7 +20,6 @@ export default function ArticlesPage() {
       ]}
       sections={[
         {
-          eyebrow: "Публикации",
           title: "Последние материалы",
           description: "После подключения системы управления здесь будут выводиться актуальные публикации.",
           columns: 2,
@@ -34,7 +32,6 @@ export default function ArticlesPage() {
           })),
         },
         {
-          eyebrow: "Навигация",
           title: "Будущие рубрики",
           description: "Предварительный набор тем для структуры раздела. Названия будут уточнены при подготовке редакционного плана.",
           columns: 2,

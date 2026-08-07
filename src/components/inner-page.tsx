@@ -14,7 +14,6 @@ export type InnerPageItem = {
 };
 
 export type InnerPageSection = {
-  eyebrow: string;
   title: string;
   description?: string;
   columns?: 2 | 3;
@@ -22,7 +21,6 @@ export type InnerPageSection = {
 };
 
 type InnerPageProps = {
-  eyebrow: string;
   title: string;
   description: string;
   visualLabel: string;
@@ -38,7 +36,6 @@ const columnClasses = {
 } as const;
 
 export function InnerPage({
-  eyebrow,
   title,
   description,
   visualLabel,
@@ -53,8 +50,7 @@ export function InnerPage({
       <section className="bg-background">
         <div className="site-container grid gap-12 py-20 md:py-24 lg:min-h-[520px] lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] lg:items-end lg:py-28">
           <div>
-            <p className="eyebrow text-primary">{eyebrow}</p>
-            <h1 className="display-title mt-7">{title}</h1>
+            <h1 className="display-title">{title}</h1>
             <p className="body-copy mt-8 max-w-3xl text-muted-foreground">
               {description}
             </p>
@@ -92,8 +88,7 @@ export function InnerPage({
           <div className="site-container">
             <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.6fr)] md:items-end">
               <div>
-                <p className="eyebrow text-primary">{section.eyebrow}</p>
-                <h2 className="section-title mt-5">{section.title}</h2>
+                <h2 className="section-title">{section.title}</h2>
               </div>
               {section.description ? (
                 <p className="body-copy max-w-2xl text-muted-foreground md:justify-self-end">
@@ -131,8 +126,7 @@ export function InnerPage({
       <section className="section-space bg-background">
         <div className="site-container grid gap-8 bg-primary p-8 text-primary-foreground md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:p-12">
           <div>
-            <p className="eyebrow">Следующий шаг</p>
-            <h2 className="mt-5 max-w-xl text-3xl font-black tracking-[-0.04em] md:text-4xl">{ctaTitle}</h2>
+            <h2 className="max-w-xl text-3xl font-black tracking-[-0.04em] md:text-4xl">{ctaTitle}</h2>
             <p className="body-copy mt-5 max-w-3xl text-primary-foreground/75">{ctaDescription}</p>
           </div>
           <Link

@@ -34,8 +34,7 @@ export default function ContactPage() {
             aria-labelledby="contact-title"
           >
             <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
-              <p className="eyebrow text-primary">Связаться с нами</p>
-              <h1 id="contact-title" className="display-title mt-7">
+              <h1 id="contact-title" className="display-title">
                 Расскажите о вашем проекте
               </h1>
               <p className="body-copy mt-7 max-w-3xl text-muted-foreground">

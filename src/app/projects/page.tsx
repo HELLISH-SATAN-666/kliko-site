@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <InnerPage
-      eyebrow="Проекты"
       title="Решения, созданные для конкретных задач"
       description="Здесь появятся реализованные проекты KLIKO: исходные задачи, ход работы и измеримые результаты. Пока карточки содержат только структурные заглушки."
       visualLabel="Место для обложки избранного проекта"
@@ -21,7 +20,6 @@ export default function ProjectsPage() {
       ]}
       sections={[
         {
-          eyebrow: "Подборка",
           title: "Реализованные проекты",
           description: "Названия, изображения и описания будут заменены фактическими материалами после согласования публикации.",
           columns: 3,
@@ -34,7 +32,6 @@ export default function ProjectsPage() {
           })),
         },
         {
-          eyebrow: "Структура кейса",
           title: "Что расскажем о каждом проекте",
           description: "Эти блоки задают единый формат будущих подробных страниц проектов.",
           columns: 3,

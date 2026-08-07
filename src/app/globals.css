@@ -99,7 +99,7 @@ textarea {
 .section-title {
   max-width: 19ch;
   font-size: clamp(2rem, 4.2vw, 3rem);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.16;
   text-wrap: balance;
@@ -133,24 +133,6 @@ textarea {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5rem;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.25rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.eyebrow::before {
-  width: 1.5rem;
-  height: 1px;
-  content: "";
-  background: currentColor;
 }
 
 .focus-ring:focus-visible {

@@ -34,20 +34,15 @@ const heroDirections = [
 ];
 
 function SectionHeading({
-  eyebrow,
   title,
   href,
 }: {
-  eyebrow: string;
   title: string;
   href?: string;
 }) {
   return (
     <div className="mb-10 flex items-end justify-between gap-8 md:mb-14">
-      <div>
-        <p className="eyebrow mb-5 text-primary">{eyebrow}</p>
-        <h2 className="section-title">{title}</h2>
-      </div>
+      <h2 className="section-title">{title}</h2>
       {href ? (
         <Link
           href={href}
@@ -126,10 +121,7 @@ export default function HomePage() {
       <section className="section-space" id="services">
         <div className="site-container">
           <Reveal>
-            <SectionHeading
-              eyebrow="Что мы делаем"
-              title="Услуги по разработке программного обеспечения"
-            />
+            <SectionHeading title="Услуги по разработке программного обеспечения" />
             <ServicesAccordion />
           </Reveal>
         </div>
@@ -145,7 +137,7 @@ export default function HomePage() {
       <section className="section-space" id="projects">
         <div className="site-container">
           <Reveal>
-            <SectionHeading eyebrow="Выбранные работы" title="Реализованные нами проекты" href="/projects" />
+            <SectionHeading title="Реализованные нами проекты" href="/projects" />
           </Reveal>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -204,7 +196,7 @@ export default function HomePage() {
       <section className="section-space" id="articles">
         <div className="site-container">
           <Reveal>
-            <SectionHeading eyebrow="База знаний" title="Статьи и материалы" href="/articles" />
+            <SectionHeading title="Статьи и материалы" href="/articles" />
           </Reveal>
 
           <div className="grid gap-3 md:grid-cols-2">
@@ -248,7 +240,7 @@ export default function HomePage() {
       <section className="section-space" id="technologies">
         <div className="site-container">
           <Reveal>
-            <SectionHeading eyebrow="Компетенции" title="Используемые нами технологии" />
+            <SectionHeading title="Используемые нами технологии" />
             <TechnologyTabs />
           </Reveal>
         </div>
@@ -258,7 +250,6 @@ export default function HomePage() {
         <div className="site-container">
           <Reveal className="grid border border-border bg-[#fafafa] lg:grid-cols-[1.58fr_1fr]">
             <div className="p-6 sm:p-9 lg:p-14">
-              <p className="eyebrow mb-5 text-primary">Связаться с нами</p>
               <h2 className="section-title">Расскажите о вашей задаче</h2>
               <p className="body-copy mt-6 max-w-2xl text-muted-foreground">
                 Оставьте контакты и краткое описание. Это демонстрационный каркас формы без отправки данных.

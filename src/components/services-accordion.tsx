@@ -66,14 +66,11 @@ export function ServicesAccordion() {
                 aria-controls={panelId}
                 onClick={() => setActiveIndex(isOpen ? null : index)}
               >
-                <span className="flex items-start gap-4">
-                  <span className="mt-1 text-xs font-bold text-primary">0{index + 1}</span>
-                  {service.title}
-                </span>
+                <span>{service.title}</span>
                 {isOpen ? (
-                  <Minus className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <Minus className="size-5 shrink-0 text-primary lg:size-6" aria-hidden="true" />
                 ) : (
-                  <Plus className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <Plus className="size-5 shrink-0 text-primary lg:size-6" aria-hidden="true" />
                 )}
               </button>
             </h3>
@@ -90,7 +87,7 @@ export function ServicesAccordion() {
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="grid gap-8 pb-10 pl-9 md:grid-cols-[1fr_1.15fr] md:gap-16 md:pb-12">
+                  <div className="grid gap-8 pb-10 md:grid-cols-[1fr_1.15fr] md:gap-16 md:pb-12">
                     <p className="body-copy max-w-xl text-muted-foreground">
                       {service.description}
                     </p>

@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <InnerPage
-      eyebrow="Услуги"
       title="Разрабатываем и развиваем цифровые продукты"
       description="На странице собраны основные направления работы. Подробные условия, состав команд и примеры решений будут добавлены после подготовки фактических материалов."
       visualLabel="Место для схемы направлений и связей между услугами"
@@ -21,7 +20,6 @@ export default function ServicesPage() {
       ]}
       sections={[
         {
-          eyebrow: "Направления",
           title: "Чем можем помочь",
           description: "Каждый блок станет отдельным описанием услуги с задачами, результатами и порядком работы.",
           columns: 3,
@@ -49,7 +47,6 @@ export default function ServicesPage() {
           ],
         },
         {
-          eyebrow: "Порядок работы",
           title: "От запроса до запуска",
           description: "Последовательность приведена как каркас и будет уточнена под реальные процессы компании.",
           columns: 3,
