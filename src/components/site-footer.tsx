@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const footerGroups = [
@@ -32,9 +33,14 @@ export function SiteFooter() {
     <footer className="bg-[#252525] text-white">
       <div className="site-container grid gap-12 py-16 md:grid-cols-[1.2fr_2fr] md:py-20">
         <div>
-          <div className="relative inline-block text-2xl font-black tracking-[-0.06em]">
-            <span className="absolute -left-2 top-0 h-full w-1 bg-primary" />
-            KLIKO
+          <div className="inline-flex bg-white px-3 py-2">
+            <Image
+              src="/kliko-logo.svg"
+              alt="KLIKO"
+              width={525}
+              height={135}
+              className="h-auto w-[170px]"
+            />
           </div>
           <p className="body-copy mt-6 max-w-lg text-white/55">
             Каркас описания компании. Финальный текст будет добавлен на этапе наполнения.

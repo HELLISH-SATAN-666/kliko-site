@@ -77,7 +77,7 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero-background">
-        <div className="site-container flex min-h-[calc(100svh-96px)] flex-col justify-center py-16 md:py-24">
+        <div className="site-container flex min-h-svh flex-col justify-center pb-20 pt-32 md:pb-24 md:pt-36">
           <Reveal>
             <p className="eyebrow mb-7 text-primary">Разработка цифровых продуктов</p>
             <h1 className="display-title">Создаём цифровые решения для бизнеса</h1>

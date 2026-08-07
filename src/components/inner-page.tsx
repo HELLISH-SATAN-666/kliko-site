@@ -49,7 +49,7 @@ export function InnerPage({
     "Расскажите о будущем проекте. Детали, сроки и формат работы будут согласованы после знакомства.",
 }: InnerPageProps) {
   return (
-    <main>
+    <main className="pt-24">
       <section className="bg-background">
         <div className="site-container grid gap-12 py-20 md:py-24 lg:min-h-[520px] lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] lg:items-end lg:py-28">
           <div>

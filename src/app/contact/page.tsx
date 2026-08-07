@@ -25,8 +25,9 @@ const nextSteps = [
 
 export default function ContactPage() {
   return (
-    <main className="section-space">
-      <div className="site-container">
+    <main className="pt-24">
+      <div className="section-space">
+        <div className="site-container">
         <Reveal>
           <section
             className="grid overflow-hidden border border-border bg-background lg:grid-cols-[minmax(0,1.65fr)_minmax(18rem,0.9fr)]"
@@ -78,6 +79,7 @@ export default function ContactPage() {
             </aside>
           </section>
         </Reveal>
+        </div>
       </div>
     </main>
   );
