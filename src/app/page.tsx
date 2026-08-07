@@ -11,12 +11,12 @@ import { cn } from "@/lib/utils";
 const partners = Array.from({ length: 8 }, (_, index) => `ЛОГО ${String(index + 1).padStart(2, "0")}`);
 
 const projects = [
-  { number: "01", tone: "project-card-blue", format: "Веб-платформа" },
-  { number: "02", tone: "project-card-mint", format: "Мобильный продукт" },
-  { number: "03", tone: "project-card-rose", format: "Корпоративная система" },
-  { number: "04", tone: "project-card-neutral", format: "Сервис аналитики" },
-  { number: "05", tone: "project-card-blue", format: "Облачное решение" },
-  { number: "06", tone: "project-card-rose", format: "Цифровая экосистема" },
+  { number: "01", placement: "project-bento-item-1", format: "Веб-платформа" },
+  { number: "02", placement: "project-bento-item-2", format: "Мобильный продукт" },
+  { number: "03", placement: "project-bento-item-3", format: "Корпоративная система" },
+  { number: "04", placement: "project-bento-item-4", format: "Сервис аналитики" },
+  { number: "05", placement: "project-bento-item-5", format: "Облачное решение" },
+  { number: "06", placement: "project-bento-item-6", format: "Цифровая экосистема" },
 ];
 
 const articles = Array.from({ length: 6 }, (_, index) => ({
@@ -140,16 +140,20 @@ export default function HomePage() {
             <SectionHeading title="Реализованные нами проекты" href="/projects" />
           </Reveal>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="projects-bento grid gap-3 sm:grid-cols-2">
+            <div className="projects-bento-gradient" aria-hidden="true" />
             {projects.map((project, index) => (
-              <Reveal key={project.number} delay={(index % 3) * 0.05}>
+              <Reveal
+                key={project.number}
+                delay={(index % 3) * 0.05}
+                className={cn(
+                  "project-bento-item min-h-0 min-w-0",
+                  project.placement,
+                )}
+              >
                 <Link
                   href="/projects"
-                  className={cn(
-                    "focus-ring group relative flex aspect-[4/5] flex-col overflow-hidden p-7",
-                    project.tone,
-                  )}
-                  aria-label={`Открыть проект-заглушку ${project.number}`}
+                  className="project-bento-card focus-ring group relative flex aspect-[4/5] flex-col overflow-hidden p-7 lg:p-9"
                 >
                   <div className="relative z-10 flex items-start justify-between gap-4">
                     <div>
@@ -172,7 +176,12 @@ export default function HomePage() {
                       <span className="size-1.5 bg-foreground/20" />
                       <span className="size-1.5 bg-foreground/20" />
                     </div>
-                    <div className="placeholder-grid aspect-[4/2.4] border border-foreground/10 bg-white/50" />
+                    <div className="placeholder-grid grid aspect-[4/2.4] place-items-center border border-foreground/10 bg-white/50">
+                      <span className="top-nav-type flex items-center gap-2 bg-white/80 px-3 py-2 text-muted-foreground">
+                        <ImageIcon className="size-4" aria-hidden="true" />
+                        Изображение проекта
+                      </span>
+                    </div>
                   </div>
 
                   <p className="nav-type relative z-10 mt-auto text-muted-foreground">
