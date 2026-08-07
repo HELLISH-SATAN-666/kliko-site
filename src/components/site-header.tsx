@@ -41,14 +41,14 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300",
+        "site-header-shell fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300",
         isScrolled
           ? "bg-[rgba(235,238,241,0.78)] shadow-[0_1px_0_rgba(17,18,20,0.06)] backdrop-blur-xl backdrop-saturate-150"
           : "bg-transparent backdrop-blur-none",
       )}
       data-state={isScrolled ? "scrolled" : "top"}
     >
-      <div className="header-container flex h-24 items-center justify-between gap-10">
+      <div className="header-container relative z-10 flex h-24 items-center justify-between gap-10">
         <Link
           href="/"
           className="focus-ring block shrink-0"
@@ -112,7 +112,7 @@ export function SiteHeader() {
         {isOpen ? (
           <motion.div
             id="mobile-navigation"
-            className="absolute inset-x-0 top-24 bg-[rgba(235,238,241,0.92)] shadow-[0_1px_0_rgba(17,18,20,0.08)] backdrop-blur-xl lg:hidden"
+            className="absolute inset-x-0 top-24 z-10 bg-[rgba(235,238,241,0.92)] shadow-[0_1px_0_rgba(17,18,20,0.08)] backdrop-blur-xl lg:hidden"
             initial={reduceMotion ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}

@@ -79,30 +79,30 @@ export default function HomePage() {
       <section className="hero-background">
         <div className="site-container flex min-h-svh flex-col justify-center pb-20 pt-32 md:pb-24 md:pt-36">
           <Reveal>
-            <p className="eyebrow mb-7 text-primary">Разработка цифровых продуктов</p>
-            <h1 className="display-title">Создаём цифровые решения для бизнеса</h1>
+            <h1 className="display-title hero-title">
+              <span className="block lg:whitespace-nowrap">Создаём цифровые</span>
+              <span className="block lg:whitespace-nowrap">решения для бизнеса</span>
+            </h1>
           </Reveal>
 
           <Reveal
             delay={0.08}
-            className="mt-10 grid items-start gap-6 sm:grid-cols-[auto_minmax(0,640px)] sm:gap-12"
+            className="mt-12 grid items-center gap-6 sm:grid-cols-[248px_minmax(0,640px)] sm:gap-12"
           >
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/contact">
-                Обсудить проект
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
+            <Button asChild size="lg" className="h-20 w-full px-6 sm:w-[248px]">
+              <Link href="/contact">Обсудить проект</Link>
             </Button>
-            <p className="body-copy max-w-[640px] text-muted-foreground">
-              Здесь будет короткое описание компании, специализации и пользы для заказчика.
+            <p className="body-copy max-w-[640px] text-foreground">
+              <span className="block">Разработка программного обеспечения</span>
+              <span className="block">В срок и рамки вашего бюджета</span>
             </p>
           </Reveal>
 
-          <Reveal delay={0.14} className="mt-14 grid grid-cols-2 gap-2 md:mt-20 md:grid-cols-3 md:gap-3">
+          <Reveal delay={0.14} className="mt-14 grid grid-cols-2 gap-2 md:mt-16 md:grid-cols-3 md:gap-3">
             {Array.from({ length: 6 }, (_, index) => (
               <div
                 key={index}
-                className="group relative aspect-[2.25/1] overflow-hidden border border-white/80 bg-white/55 backdrop-blur-sm transition-colors hover:border-foreground/50"
+                className="group relative aspect-[2.25/1] overflow-hidden border border-white/80 bg-white/55 backdrop-blur-sm transition-colors hover:border-foreground/50 lg:h-[108px] lg:aspect-auto"
               >
                 <div className="placeholder-grid absolute inset-0 opacity-30 transition-opacity group-hover:opacity-50" />
                 <div className="absolute inset-x-4 bottom-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">

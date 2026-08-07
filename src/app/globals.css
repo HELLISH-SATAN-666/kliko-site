@@ -11,7 +11,7 @@
   --muted: #f4f5f7;
   --muted-foreground: #62666d;
   --border: #dfe2e6;
-  --ring: #159eea;
+  --ring: #01caff;
   --radius: 0.125rem;
 }
 
@@ -89,6 +89,11 @@ textarea {
   letter-spacing: -0.045em;
   line-height: 1.1;
   text-wrap: balance;
+}
+
+.hero-title {
+  max-width: 15.5ch;
+  font-weight: 700;
 }
 
 .section-title {
@@ -191,6 +196,30 @@ textarea {
   background-size: 100% 100%;
 }
 
+.site-header-shell {
+  isolation: isolate;
+}
+
+.site-header-shell::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 72%) 0 0.5px, transparent 0.75px),
+    radial-gradient(circle, rgb(17 18 20 / 24%) 0 0.42px, transparent 0.68px);
+  background-position: 0 0, 1px 2px;
+  background-size: 3px 3px, 5px 5px;
+  mix-blend-mode: soft-light;
+  transition: opacity 300ms ease;
+}
+
+.site-header-shell[data-state="scrolled"]::after {
+  opacity: 0.26;
+}
+
 .partner-track {
   width: max-content;
   animation: partner-scroll 32s linear infinite;
@@ -230,6 +259,11 @@ textarea {
   .display-title {
     font-size: 80px;
     line-height: 88px;
+  }
+
+  .hero-title {
+    font-size: 72px;
+    line-height: 80px;
   }
 
   .section-title {
