@@ -50,7 +50,7 @@ export function TechnologyTabs() {
             role="tab"
             aria-selected={selected === index}
             aria-controls="technology-panel"
-            className="focus-ring relative shrink-0 px-4 py-4 text-xs font-bold text-muted-foreground transition-colors first:pl-0 hover:text-foreground aria-selected:text-foreground"
+            className="nav-type focus-ring relative shrink-0 px-5 py-5 text-muted-foreground transition-colors first:pl-0 hover:text-foreground aria-selected:text-foreground"
             onClick={() => setSelected(index)}
           >
             {group.label}
@@ -88,7 +88,7 @@ export function TechnologyTabs() {
                 Заглушка
               </span>
             </div>
-            <p className="text-sm font-bold">{item}</p>
+            <p className="card-title">{item}</p>
           </div>
         ))}
       </motion.div>

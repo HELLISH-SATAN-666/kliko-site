@@ -22,25 +22,25 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur-sm">
-      <div className="header-container flex h-[72px] items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
+      <div className="header-container flex h-24 items-center justify-between gap-10">
         <Link
           href="/"
-          className="focus-ring relative text-xl font-black tracking-[-0.06em]"
+          className="focus-ring relative text-[28px] font-black tracking-[-0.06em]"
           aria-label="KLIKO — на главную"
         >
           <span className="absolute -left-2 top-0 h-full w-1 bg-primary" />
           KLIKO
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Основная навигация">
+        <nav className="hidden items-center gap-10 lg:flex" aria-label="Основная навигация">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={pathname === item.href ? "page" : undefined}
               className={cn(
-                "focus-ring text-sm font-semibold transition-colors hover:text-primary",
+                "nav-type focus-ring transition-colors hover:text-primary",
                 pathname === item.href ? "text-primary" : "text-foreground",
               )}
             >
@@ -49,9 +49,9 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <span className="text-xs font-bold tracking-[0.14em] text-muted-foreground">RU</span>
-          <Button asChild size="sm">
+        <div className="hidden items-center gap-6 lg:flex">
+          <span className="top-nav-type font-semibold tracking-[0.14em] text-muted-foreground">RU</span>
+          <Button asChild>
             <Link href="/contact">Обсудить проект</Link>
           </Button>
         </div>
@@ -72,7 +72,7 @@ export function SiteHeader() {
         {isOpen ? (
           <motion.div
             id="mobile-navigation"
-            className="absolute inset-x-0 top-[72px] border-b border-border bg-background lg:hidden"
+            className="absolute inset-x-0 top-24 bg-background lg:hidden"
             initial={reduceMotion ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}

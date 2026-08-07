@@ -61,7 +61,7 @@ export function ServicesAccordion() {
               <button
                 id={buttonId}
                 type="button"
-                className="focus-ring flex w-full items-center justify-between gap-6 py-5 text-left text-base font-bold transition-colors hover:text-primary md:py-6 md:text-lg"
+                className="card-title focus-ring flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-primary md:py-8"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setActiveIndex(isOpen ? null : index)}
@@ -90,11 +90,11 @@ export function ServicesAccordion() {
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="grid gap-7 pb-8 pl-9 md:grid-cols-[1.15fr_1fr] md:gap-12 md:pb-10">
-                    <p className="max-w-md text-sm leading-6 text-muted-foreground">
+                  <div className="grid gap-8 pb-10 pl-9 md:grid-cols-[1fr_1.15fr] md:gap-16 md:pb-12">
+                    <p className="body-copy max-w-xl text-muted-foreground">
                       {service.description}
                     </p>
-                    <ul className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
+                    <ul className="nav-type grid gap-x-8 gap-y-4 sm:grid-cols-2">
                       {service.points.map((point) => (
                         <li key={point} className="flex items-start gap-2">
                           <span className="mt-[0.55em] size-1 shrink-0 bg-primary" />

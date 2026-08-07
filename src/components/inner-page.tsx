@@ -50,12 +50,12 @@ export function InnerPage({
 }: InnerPageProps) {
   return (
     <main>
-      <section className="border-b border-border bg-background">
+      <section className="bg-background">
         <div className="site-container grid gap-12 py-20 md:py-24 lg:min-h-[520px] lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] lg:items-end lg:py-28">
           <div>
             <p className="eyebrow text-primary">{eyebrow}</p>
             <h1 className="display-title mt-7">{title}</h1>
-            <p className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+            <p className="body-copy mt-8 max-w-3xl text-muted-foreground">
               {description}
             </p>
           </div>
@@ -73,12 +73,12 @@ export function InnerPage({
         </div>
       </section>
 
-      <section className="border-b border-border bg-background" aria-label="Краткие сведения">
+      <section className="bg-background" aria-label="Краткие сведения">
         <div className="site-container grid border-l border-t border-border sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label} className="min-h-36 border-b border-r border-border p-6 md:p-8">
               <p className="text-3xl font-black tracking-[-0.04em] text-primary">{fact.value}</p>
-              <p className="mt-5 max-w-[16rem] text-sm leading-6 text-muted-foreground">{fact.label}</p>
+              <p className="mt-5 max-w-[20rem] text-base leading-6 text-muted-foreground">{fact.label}</p>
             </div>
           ))}
         </div>
@@ -87,7 +87,7 @@ export function InnerPage({
       {sections.map((section, sectionIndex) => (
         <section
           key={section.title}
-          className={`section-space border-b border-border ${sectionIndex % 2 === 1 ? "bg-muted/45" : "bg-background"}`}
+          className={`section-space ${sectionIndex % 2 === 1 ? "bg-muted/45" : "bg-background"}`}
         >
           <div className="site-container">
             <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.6fr)] md:items-end">
@@ -96,7 +96,7 @@ export function InnerPage({
                 <h2 className="section-title mt-5">{section.title}</h2>
               </div>
               {section.description ? (
-                <p className="max-w-xl text-sm leading-6 text-muted-foreground md:justify-self-end">
+                <p className="body-copy max-w-2xl text-muted-foreground md:justify-self-end">
                   {section.description}
                 </p>
               ) : null}
@@ -118,8 +118,8 @@ export function InnerPage({
                       <span>{item.label ?? String(itemIndex + 1).padStart(2, "0")}</span>
                       {item.meta ? <span className="text-right text-muted-foreground">{item.meta}</span> : null}
                     </div>
-                    <h3 className="mt-7 text-xl font-bold tracking-[-0.025em]">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.description}</p>
+                    <h3 className="card-title mt-7">{item.title}</h3>
+                    <p className="mt-5 text-base leading-6 text-muted-foreground">{item.description}</p>
                   </div>
                 </article>
               ))}
@@ -133,11 +133,11 @@ export function InnerPage({
           <div>
             <p className="eyebrow">Следующий шаг</p>
             <h2 className="mt-5 max-w-xl text-3xl font-black tracking-[-0.04em] md:text-4xl">{ctaTitle}</h2>
-            <p className="mt-5 max-w-2xl text-sm leading-6 text-primary-foreground/75">{ctaDescription}</p>
+            <p className="body-copy mt-5 max-w-3xl text-primary-foreground/75">{ctaDescription}</p>
           </div>
           <Link
             href="/contact"
-            className="focus-ring inline-flex min-h-12 items-center justify-center bg-foreground px-6 text-sm font-bold text-background transition-colors hover:bg-[#252525]"
+            className="button-type focus-ring inline-flex min-h-14 items-center justify-center bg-foreground px-8 text-background transition-colors hover:bg-[#252525]"
           >
             Обсудить проект
           </Link>

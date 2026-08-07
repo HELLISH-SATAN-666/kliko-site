@@ -26,7 +26,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --font-sans: Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-heading: var(--font-unbounded), Arial, Helvetica, sans-serif;
   --radius-sm: calc(var(--radius) - 1px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
@@ -44,8 +45,14 @@ body {
   min-width: 320px;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-unbounded), Arial, Helvetica, sans-serif;
 }
 
 ::selection {
@@ -62,12 +69,12 @@ textarea {
 }
 
 .site-container {
-  width: min(100% - 40px, 960px);
+  width: min(100% - 40px, 1310px);
   margin-inline: auto;
 }
 
 .header-container {
-  width: min(100% - 40px, 1040px);
+  width: min(100% - 40px, 1310px);
   margin-inline: auto;
 }
 
@@ -78,27 +85,58 @@ textarea {
 .display-title {
   max-width: 14ch;
   font-size: clamp(2.6rem, 6.1vw, 4.5rem);
-  font-weight: 800;
-  letter-spacing: -0.055em;
-  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
   text-wrap: balance;
 }
 
 .section-title {
-  max-width: 17ch;
+  max-width: 19ch;
   font-size: clamp(2rem, 4.2vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.03;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
   text-wrap: balance;
+}
+
+.body-copy {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.card-title {
+  font-family: var(--font-unbounded), Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.nav-type {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.top-nav-type {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.button-type {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -145,6 +183,14 @@ textarea {
     #f7fbfd;
 }
 
+.hero-background {
+  background-color: #ffffff;
+  background-image: url("/hero-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .partner-track {
   width: max-content;
   animation: partner-scroll 32s linear infinite;
@@ -172,11 +218,33 @@ textarea {
 
 @media (min-width: 768px) {
   .site-container {
-    width: min(100% - 64px, 960px);
+    width: min(100% - 64px, 1310px);
   }
 
   .header-container {
-    width: min(100% - 64px, 1040px);
+    width: min(100% - 64px, 1310px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-title {
+    font-size: 80px;
+    line-height: 88px;
+  }
+
+  .section-title {
+    font-size: 52px;
+    line-height: 64px;
+  }
+
+  .body-copy {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .card-title {
+    font-size: 24px;
+    line-height: 32px;
   }
 }
 

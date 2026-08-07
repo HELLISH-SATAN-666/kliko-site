@@ -34,10 +34,10 @@ export default function ContactPage() {
           >
             <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
               <p className="eyebrow text-primary">Связаться с нами</p>
-              <h1 id="contact-title" className="section-title mt-5">
+              <h1 id="contact-title" className="display-title mt-7">
                 Расскажите о вашем проекте
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
+              <p className="body-copy mt-7 max-w-3xl text-muted-foreground">
                 Заполните форму — мы изучим запрос и вернёмся с ответом. Сейчас это
                 интерактивный каркас без внешней отправки данных.
               </p>
@@ -49,7 +49,7 @@ export default function ContactPage() {
               <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
                 После обращения
               </p>
-              <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.04em]">
+              <h2 className="card-title mt-4">
                 Что будет дальше?
               </h2>
 
@@ -63,8 +63,8 @@ export default function ContactPage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h3 className="font-bold">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                      <h3 className="card-title">{step.title}</h3>
+                      <p className="mt-3 text-base leading-6 text-muted-foreground">
                         {step.description}
                       </p>
                     </div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
                 ))}
               </ol>
 
-              <p className="mt-12 border-t border-foreground/15 pt-6 text-sm leading-6 text-muted-foreground">
+              <p className="nav-type mt-12 border-t border-foreground/15 pt-6 text-muted-foreground">
                 Срок первичного ответа будет указан после настройки рабочего процесса.
               </p>
             </aside>

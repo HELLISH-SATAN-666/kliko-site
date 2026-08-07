@@ -36,7 +36,7 @@ export function SiteFooter() {
             <span className="absolute -left-2 top-0 h-full w-1 bg-primary" />
             KLIKO
           </div>
-          <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
+          <p className="body-copy mt-6 max-w-lg text-white/55">
             Каркас описания компании. Финальный текст будет добавлен на этапе наполнения.
           </p>
         </div>
@@ -44,10 +44,10 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <h2 className="text-xs font-bold uppercase tracking-[0.13em] text-white/45">
+              <h2 className="top-nav-type font-semibold uppercase tracking-[0.13em] text-white/45">
                 {group.title}
               </h2>
-              <ul className="mt-5 space-y-3 text-sm">
+              <ul className="nav-type mt-6 space-y-3">
                 {group.links.map(([label, href]) => (
                   <li key={label}>
                     <Link className="focus-ring text-white/75 transition-colors hover:text-white" href={href}>

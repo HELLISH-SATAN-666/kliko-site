@@ -42,7 +42,7 @@ function SectionHeading({
       {href ? (
         <Link
           href={href}
-          className="focus-ring mb-1 hidden items-center gap-2 text-sm font-bold transition-colors hover:text-primary sm:flex"
+          className="nav-type focus-ring mb-1 hidden items-center gap-2 transition-colors hover:text-primary sm:flex"
         >
           Смотреть все
           <ArrowRight className="size-4" aria-hidden="true" />
@@ -76,8 +76,8 @@ function PartnerRow({ reverse = false }: { reverse?: boolean }) {
 export default function HomePage() {
   return (
     <main>
-      <section className="border-b border-border">
-        <div className="site-container flex min-h-[calc(100svh-72px)] flex-col justify-center py-16 md:py-24">
+      <section className="hero-background">
+        <div className="site-container flex min-h-[calc(100svh-96px)] flex-col justify-center py-16 md:py-24">
           <Reveal>
             <p className="eyebrow mb-7 text-primary">Разработка цифровых продуктов</p>
             <h1 className="display-title">Создаём цифровые решения для бизнеса</h1>
@@ -85,7 +85,7 @@ export default function HomePage() {
 
           <Reveal
             delay={0.08}
-            className="mt-9 grid items-start gap-5 sm:grid-cols-[auto_minmax(0,430px)] sm:gap-8"
+            className="mt-10 grid items-start gap-6 sm:grid-cols-[auto_minmax(0,640px)] sm:gap-12"
           >
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/contact">
@@ -93,7 +93,7 @@ export default function HomePage() {
                 <ArrowUpRight aria-hidden="true" />
               </Link>
             </Button>
-            <p className="max-w-md text-sm leading-6 text-muted-foreground">
+            <p className="body-copy max-w-[640px] text-muted-foreground">
               Здесь будет короткое описание компании, специализации и пользы для заказчика.
             </p>
           </Reveal>
@@ -102,7 +102,7 @@ export default function HomePage() {
             {Array.from({ length: 6 }, (_, index) => (
               <div
                 key={index}
-                className="group relative aspect-[2.25/1] overflow-hidden border border-border bg-background transition-colors hover:border-foreground"
+                className="group relative aspect-[2.25/1] overflow-hidden border border-white/80 bg-white/55 backdrop-blur-sm transition-colors hover:border-foreground/50"
               >
                 <div className="placeholder-grid absolute inset-0 opacity-30 transition-opacity group-hover:opacity-50" />
                 <div className="absolute inset-x-4 bottom-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
@@ -127,8 +127,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-border py-9" aria-label="Партнёры и клиенты">
-        <div className="space-y-3">
+      <section className="py-14" aria-label="Партнёры и клиенты">
+        <div className="site-container space-y-3 overflow-hidden">
           <PartnerRow />
           <PartnerRow reverse />
         </div>
@@ -146,7 +146,7 @@ export default function HomePage() {
                 <Link
                   href="/projects"
                   className={cn(
-                    "focus-ring group relative flex aspect-[4/5] flex-col overflow-hidden p-5",
+                    "focus-ring group relative flex aspect-[4/5] flex-col overflow-hidden p-7",
                     project.tone,
                   )}
                   aria-label={`Открыть проект-заглушку ${project.number}`}
@@ -156,7 +156,7 @@ export default function HomePage() {
                       <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-muted-foreground">
                         Кейс {project.number}
                       </p>
-                      <h3 className="mt-2 max-w-[14ch] text-lg font-bold leading-tight">
+                      <h3 className="card-title mt-3 max-w-[14ch]">
                         Название проекта-заглушки
                       </h3>
                     </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
                     <div className="placeholder-grid aspect-[4/2.4] border border-foreground/10 bg-white/50" />
                   </div>
 
-                  <p className="relative z-10 mt-auto text-xs font-semibold text-muted-foreground">
+                  <p className="nav-type relative z-10 mt-auto text-muted-foreground">
                     {project.format}
                   </p>
                 </Link>
@@ -193,7 +193,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space border-t border-border" id="articles">
+      <section className="section-space" id="articles">
         <div className="site-container">
           <Reveal>
             <SectionHeading eyebrow="База знаний" title="Статьи и материалы" href="/articles" />
@@ -204,17 +204,17 @@ export default function HomePage() {
               <Reveal key={article.number} delay={(index % 2) * 0.05}>
                 <Link
                   href="/articles"
-                  className="focus-ring group grid min-h-36 grid-cols-[1.2fr_0.8fr] border border-border bg-background transition-colors hover:border-foreground"
+                  className="focus-ring group grid min-h-[220px] grid-cols-[1.2fr_0.8fr] border border-border bg-background transition-colors hover:border-foreground"
                 >
-                  <div className="flex flex-col p-4">
-                    <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.11em] text-muted-foreground">
+                  <div className="flex flex-col p-7">
+                    <p className="top-nav-type flex items-center gap-2 font-semibold uppercase tracking-[0.11em] text-muted-foreground">
                       <span className="size-1.5 bg-primary" />
                       {article.category}
                     </p>
-                    <h3 className="mt-3 text-sm font-bold leading-snug">
+                    <h3 className="card-title mt-5">
                       Заголовок материала-заглушки {article.number}
                     </h3>
-                    <p className="mt-auto text-[10px] text-muted-foreground">Дата публикации</p>
+                    <p className="top-nav-type mt-auto text-muted-foreground">Дата публикации</p>
                   </div>
                   <div className="placeholder-grid relative grid place-items-center overflow-hidden border-l border-border bg-muted">
                     <ImageIcon className="size-5 text-muted-foreground/60" aria-hidden="true" />
@@ -237,7 +237,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space border-t border-border" id="technologies">
+      <section className="section-space" id="technologies">
         <div className="site-container">
           <Reveal>
             <SectionHeading eyebrow="Компетенции" title="Используемые нами технологии" />
@@ -246,13 +246,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space border-t border-border" id="contact">
+      <section className="section-space" id="contact">
         <div className="site-container">
           <Reveal className="grid border border-border bg-[#fafafa] lg:grid-cols-[1.58fr_1fr]">
-            <div className="p-6 sm:p-9 lg:p-11">
+            <div className="p-6 sm:p-9 lg:p-14">
               <p className="eyebrow mb-5 text-primary">Связаться с нами</p>
               <h2 className="section-title">Расскажите о вашей задаче</h2>
-              <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground">
+              <p className="body-copy mt-6 max-w-2xl text-muted-foreground">
                 Оставьте контакты и краткое описание. Это демонстрационный каркас формы без отправки данных.
               </p>
               <div className="mt-9">
@@ -260,8 +260,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            <aside className="contact-gradient border-t border-border p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-10">
-              <p className="text-xl font-bold">Что будет дальше?</p>
+            <aside className="contact-gradient border-t border-border p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+              <h3 className="card-title">Что будет дальше?</h3>
               <ol className="mt-8 space-y-7">
                 {[
                   "Получим и уточним вводные",
@@ -273,8 +273,8 @@ export default function HomePage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <p className="text-sm font-bold">{step}</p>
-                      <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                      <p className="card-title">{step}</p>
+                      <p className="mt-2 text-base leading-6 text-muted-foreground">
                         Краткое пояснение этапа будет добавлено позже.
                       </p>
                     </div>
