@@ -24,6 +24,15 @@ const articles = Array.from({ length: 6 }, (_, index) => ({
   category: index % 2 === 0 ? "Практика" : "Материалы",
 }));
 
+const heroDirections = [
+  "Разработка ПО",
+  "ИИ и данные",
+  "Мобильные продукты",
+  "Финтех",
+  "Цифровое здравоохранение",
+  "Усиление команд",
+];
+
 function SectionHeading({
   eyebrow,
   title,
@@ -77,7 +86,7 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero-background">
-        <div className="site-container flex min-h-svh flex-col justify-center pb-20 pt-32 md:pb-24 md:pt-36">
+        <div className="hero-content site-container flex min-h-svh flex-col">
           <Reveal>
             <h1 className="display-title hero-title">
               <span className="block lg:whitespace-nowrap">Создаём цифровые</span>
@@ -98,18 +107,17 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.14} className="mt-14 grid grid-cols-2 gap-2 md:mt-16 md:grid-cols-3 md:gap-3">
-            {Array.from({ length: 6 }, (_, index) => (
-              <div
-                key={index}
-                className="group relative aspect-[2.25/1] overflow-hidden border border-white/80 bg-white/55 backdrop-blur-sm transition-colors hover:border-foreground/50 lg:h-[108px] lg:aspect-auto"
+          <Reveal delay={0.14} className="hero-directions-grid grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3">
+            {heroDirections.map((direction) => (
+              <Link
+                key={direction}
+                href="/services"
+                className="hero-glass-card focus-ring group flex items-center px-7 md:px-8"
               >
-                <div className="placeholder-grid absolute inset-0 opacity-30 transition-opacity group-hover:opacity-50" />
-                <div className="absolute inset-x-4 bottom-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
-                  <span>Визуал</span>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                </div>
-              </div>
+                <span className="relative z-10 text-2xl font-medium leading-8 text-foreground">
+                  {direction}
+                </span>
+              </Link>
             ))}
           </Reveal>
         </div>
