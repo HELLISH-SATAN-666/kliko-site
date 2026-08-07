@@ -98,7 +98,7 @@ export default function HomePage() {
             delay={0.08}
             className="mt-12 grid items-center gap-6 sm:grid-cols-[248px_minmax(0,640px)] sm:gap-12"
           >
-            <Button asChild size="lg" className="h-20 w-full px-6 sm:w-[248px]">
+            <Button asChild size="lg" className="h-16 w-full px-6 sm:w-[248px]">
               <Link href="/contact">Обсудить проект</Link>
             </Button>
             <p className="body-copy max-w-[640px] text-foreground">

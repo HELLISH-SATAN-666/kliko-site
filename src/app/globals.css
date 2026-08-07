@@ -6,12 +6,12 @@
   --foreground: #111214;
   --card: #ffffff;
   --card-foreground: #111214;
-  --primary: #01caff;
+  --primary: #007fa1;
   --primary-foreground: #ffffff;
   --muted: #f4f5f7;
   --muted-foreground: #62666d;
   --border: #dfe2e6;
-  --ring: #01caff;
+  --ring: var(--primary);
   --radius: 0.125rem;
 }
 
@@ -56,8 +56,8 @@ h3 {
 }
 
 ::selection {
-  background: #b8e5ff;
-  color: #06141d;
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 button,
@@ -93,7 +93,7 @@ textarea {
 
 .hero-title {
   max-width: 15.5ch;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .section-title {
@@ -328,6 +328,10 @@ textarea {
 }
 
 @media (min-width: 1024px) {
+  .hero-content {
+    --hero-major-gap: clamp(112px, calc(7vh + 64px), 144px);
+  }
+
   .display-title {
     font-size: 80px;
     line-height: 88px;

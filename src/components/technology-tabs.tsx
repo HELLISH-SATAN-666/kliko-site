@@ -78,7 +78,7 @@ export function TechnologyTabs() {
         {activeGroup.items.map((item, index) => (
           <div
             key={item}
-            className={index === 0 ? "min-h-28 bg-[#dff3ff] p-5" : "min-h-28 bg-muted p-5"}
+            className={index === 0 ? "min-h-28 bg-primary/10 p-5" : "min-h-28 bg-muted p-5"}
           >
             <div className="mb-8 flex items-center justify-between">
               <span className="grid size-7 place-items-center border border-foreground/15 text-[10px] font-bold">
