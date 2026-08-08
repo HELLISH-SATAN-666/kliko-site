@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Image as ImageIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Image as ImageIcon, Zap } from "lucide-react";
 import Link from "next/link";
 
 import { ContactForm } from "@/components/contact-form";
@@ -21,7 +21,6 @@ const projects = [
 
 const articles = Array.from({ length: 6 }, (_, index) => ({
   number: String(index + 1).padStart(2, "0"),
-  category: index % 2 === 0 ? "Практика" : "Материалы",
 }));
 
 const heroDirections = [
@@ -213,19 +212,25 @@ export default function HomePage() {
               <Reveal key={article.number} delay={(index % 2) * 0.05}>
                 <Link
                   href="/articles"
-                  className="focus-ring group grid min-h-[220px] grid-cols-[1.2fr_0.8fr] border border-border bg-background transition-colors hover:border-foreground"
+                  className="article-card focus-ring group relative grid border border-border bg-background transition-colors hover:border-foreground"
                 >
-                  <div className="flex flex-col p-7">
-                    <p className="top-nav-type flex items-center gap-2 font-semibold uppercase tracking-[0.11em] text-muted-foreground">
-                      <span className="size-1.5 bg-primary" />
-                      {article.category}
-                    </p>
-                    <h3 className="card-title mt-5">
+                  {index === 0 ? (
+                    <Zap
+                      className="pointer-events-none absolute left-[-14px] top-[-27px] z-10 h-20 w-12 -rotate-[8deg] fill-primary text-primary"
+                      strokeWidth={1.2}
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  <div className="flex min-w-0 flex-col p-7 lg:p-8">
+                    <h3 className="card-title max-w-[22ch]">
                       Заголовок материала-заглушки {article.number}
                     </h3>
                     <p className="top-nav-type mt-auto text-muted-foreground">Дата публикации</p>
                   </div>
-                  <div className="placeholder-grid relative grid place-items-center overflow-hidden border-l border-border bg-muted">
+                  <div
+                    className="article-card-media placeholder-grid relative grid place-items-center overflow-hidden border-l border-border bg-muted"
+                    aria-hidden="true"
+                  >
                     <ImageIcon className="size-5 text-muted-foreground/60" aria-hidden="true" />
                     <span className="absolute bottom-2 right-2 text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
                       Изображение

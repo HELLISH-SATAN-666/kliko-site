@@ -160,6 +160,16 @@ textarea {
     linear-gradient(135deg, #edf8fb 0%, #f8fbfc 52%, #fff6f6 100%);
 }
 
+.article-card {
+  grid-template-columns: minmax(0, 62fr) minmax(160px, 38fr);
+}
+
+.article-card-media {
+  align-self: start;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
 .contact-gradient {
   background:
     radial-gradient(circle at 20% 12%, rgb(184 231 255 / 78%), transparent 38%),
