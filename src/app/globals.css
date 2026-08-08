@@ -6,7 +6,7 @@
   --foreground: #111214;
   --card: #ffffff;
   --card-foreground: #111214;
-  --primary: #007fa1;
+  --primary: #007794;
   --primary-foreground: #ffffff;
   --muted: #f4f5f7;
   --muted-foreground: #62666d;
@@ -154,7 +154,7 @@ textarea {
 .projects-bento-gradient {
   display: none;
   background:
-    radial-gradient(circle at 8% 10%, rgb(0 127 161 / 20%), transparent 34%),
+    radial-gradient(circle at 8% 10%, rgb(0 119 148 / 20%), transparent 34%),
     radial-gradient(circle at 48% 8%, rgb(166 231 222 / 46%), transparent 32%),
     radial-gradient(circle at 83% 82%, rgb(255 205 218 / 60%), transparent 38%),
     linear-gradient(135deg, #edf8fb 0%, #f8fbfc 52%, #fff6f6 100%);
