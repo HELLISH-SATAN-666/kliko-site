@@ -143,6 +143,7 @@ h1 {
   .launch-date {
     margin-top: 30px;
     font-size: clamp(17px, 5vw, 31px);
+    text-align: center;
   }
 }
 
