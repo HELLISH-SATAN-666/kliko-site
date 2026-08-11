@@ -23,6 +23,36 @@ const articles = Array.from({ length: 6 }, (_, index) => ({
   number: String(index + 1).padStart(2, "0"),
 }));
 
+const whyChooseCells = [
+  { key: "expertise", kind: "stat", value: "XX", suffix: "+", label: "лет экспертизы" },
+  { key: "team", kind: "stat", value: "XXX", suffix: "+", label: "специалистов" },
+  {
+    key: "onboarding",
+    kind: "copy",
+    title: "Быстрый старт и погружение",
+    description:
+      "Здесь будет текст о скорости подключения команды, изучении задачи и первых результатах.",
+  },
+  {
+    key: "processes",
+    kind: "copy",
+    title: "Проверенные процессы",
+    description:
+      "Здесь будет описание подхода к качеству, прозрачности работы и управлению рисками.",
+  },
+  { key: "team-photo", kind: "media", label: "Фотография команды — заглушка" },
+  { key: "retention", kind: "stat", value: "XX", suffix: "%", label: "повторных обращений" },
+  { key: "office-photo", kind: "media", label: "Рабочий процесс — заглушка" },
+  { key: "projects", kind: "stat", value: "XXX", suffix: "+", label: "реализованных проектов" },
+  {
+    key: "flexibility",
+    kind: "copy",
+    title: "Гибкость взаимодействия",
+    description:
+      "Здесь будет текст о форматах сотрудничества, коммуникации и адаптации к команде клиента.",
+  },
+] as const;
+
 const heroDirections = [
   "Разработка ПО",
   "ИИ и данные",
@@ -35,9 +65,13 @@ const heroDirections = [
 function SectionHeading({
   title,
   href,
+  linkLabel = "Смотреть все",
+  linkVariant = "arrow",
 }: {
   title: string;
   href?: string;
+  linkLabel?: string;
+  linkVariant?: "arrow" | "underline";
 }) {
   return (
     <div className="mb-10 flex items-end justify-between gap-8 md:mb-14">
@@ -45,10 +79,16 @@ function SectionHeading({
       {href ? (
         <Link
           href={href}
-          className="nav-type focus-ring mb-1 hidden items-center gap-2 transition-colors hover:text-primary sm:flex"
+          className={cn(
+            "nav-type focus-ring mb-1 hidden items-center gap-2 transition-colors hover:text-primary sm:flex",
+            linkVariant === "underline" &&
+              "border-b border-foreground pb-1 hover:border-primary",
+          )}
         >
-          Смотреть все
-          <ArrowRight className="size-4" aria-hidden="true" />
+          {linkLabel}
+          {linkVariant === "arrow" ? (
+            <ArrowRight className="size-4" aria-hidden="true" />
+          ) : null}
         </Link>
       ) : null}
     </div>
@@ -248,6 +288,62 @@ export default function HomePage() {
             Смотреть все материалы
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
+        </div>
+      </section>
+
+      <section className="section-space" id="why-kliko">
+        <div className="site-container">
+          <Reveal>
+            <SectionHeading
+              title="Почему выбрать KLIKO?"
+              href="/about"
+              linkLabel="О нас"
+              linkVariant="underline"
+            />
+          </Reveal>
+
+          <Reveal delay={0.08} className="md:mt-6 lg:mt-8">
+            <div className="why-kliko-grid">
+              {whyChooseCells.map((cell) => {
+                if (cell.kind === "stat") {
+                  return (
+                    <article key={cell.key} className="why-kliko-cell why-kliko-stat">
+                      <p className="why-kliko-value">
+                        <span>{cell.value}</span>
+                        <span className="why-kliko-affix">{cell.suffix}</span>
+                      </p>
+                      <p className="nav-type text-muted-foreground">{cell.label}</p>
+                    </article>
+                  );
+                }
+
+                if (cell.kind === "media") {
+                  return (
+                    <div
+                      key={cell.key}
+                      className="why-kliko-cell why-kliko-media placeholder-grid"
+                      role="img"
+                      aria-label={cell.label}
+                    >
+                      <ImageIcon className="size-8 text-muted-foreground/55" aria-hidden="true" />
+                      <span className="top-nav-type absolute bottom-5 left-5 bg-background px-3 py-2 text-muted-foreground">
+                        {cell.label}
+                      </span>
+                    </div>
+                  );
+                }
+
+                return (
+                  <article key={cell.key} className="why-kliko-cell why-kliko-copy">
+                    <h3 className="why-kliko-copy-title">{cell.title}</h3>
+                    <p className="mt-5 max-w-md text-base leading-6 text-muted-foreground">
+                      {cell.description}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </Reveal>
         </div>
       </section>
 
