@@ -356,42 +356,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space" id="contact">
+      <section className="contact-section" id="contact" aria-labelledby="contact-section-title">
         <div className="site-container">
-          <Reveal className="grid border border-border bg-[#fafafa] lg:grid-cols-[1.58fr_1fr]">
-            <div className="p-6 sm:p-9 lg:p-14">
-              <h2 className="section-title">Расскажите о вашей задаче</h2>
-              <p className="body-copy mt-6 max-w-2xl text-muted-foreground">
-                Оставьте контакты и краткое описание. Это демонстрационный каркас формы без отправки данных.
+          <div className="contact-layout">
+            <Reveal>
+              <h2 className="section-title" id="contact-section-title">
+                Связаться с нами
+              </h2>
+              <p className="body-copy contact-lead">
+                <Link className="focus-ring text-primary underline underline-offset-2" href="/contact">
+                  Назначьте звонок
+                </Link>{" "}
+                или заполните форму ниже — мы свяжемся с вами после обработки запроса.
               </p>
-              <div className="mt-9">
-                <ContactForm />
-              </div>
-            </div>
+              <ContactForm className="mt-12" variant="reference" />
+            </Reveal>
 
-            <aside className="contact-gradient border-t border-border p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+            <Reveal delay={0.08} className="contact-next-card contact-gradient">
               <h3 className="card-title">Что будет дальше?</h3>
-              <ol className="mt-8 space-y-7">
+              <ol>
                 {[
-                  "Получим и уточним вводные",
-                  "Предложим формат работы",
-                  "Подготовим следующий шаг",
+                  "Получим и обработаем заявку, затем свяжемся с вами, чтобы уточнить детали проекта и согласовать конфиденциальность.",
+                  "Изучим цели и ожидания, затем подготовим предложение с объёмом работ, командой, сроками и оценкой.",
+                  "Организуем встречу, обсудим предложение и зафиксируем детали.",
+                  "Подпишем договор и приступим к работе над вашим проектом.",
                 ].map((step, index) => (
-                  <li key={step} className="grid grid-cols-[28px_1fr] gap-3">
-                    <span className="grid size-7 place-items-center border border-foreground/30 text-[10px] font-bold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <p className="card-title">{step}</p>
-                      <p className="mt-2 text-base leading-6 text-muted-foreground">
-                        Краткое пояснение этапа будет добавлено позже.
-                      </p>
-                    </div>
+                  <li key={step}>
+                    <span aria-hidden="true">{index + 1}</span>
+                    <p>{step}</p>
                   </li>
                 ))}
               </ol>
-            </aside>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
     </main>
