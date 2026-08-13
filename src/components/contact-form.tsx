@@ -21,27 +21,88 @@ export function ContactForm({
 }) {
   const formId = useId();
   const [status, setStatus] = useState("");
+  const [contactError, setContactError] = useState("");
+  const nameId = `${formId}-name`;
+  const companyId = `${formId}-company`;
+  const emailId = `${formId}-email`;
+  const phoneId = `${formId}-phone`;
+  const budgetId = `${formId}-budget`;
+  const projectTypeId = `${formId}-project-type`;
+  const descriptionId = `${formId}-description`;
+  const contactMethodHintId = `${formId}-contact-method-hint`;
+  const contactMethodErrorId = `${formId}-contact-method-error`;
+
+  function clearContactValidity(form: HTMLFormElement) {
+    const email = form.elements.namedItem("email");
+    const phone = form.elements.namedItem("phone");
+
+    if (email instanceof HTMLInputElement) email.setCustomValidity("");
+    if (phone instanceof HTMLInputElement) phone.setCustomValidity("");
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const email = event.currentTarget.elements.namedItem("email");
+    const phone = event.currentTarget.elements.namedItem("phone");
+
+    if (email instanceof HTMLInputElement && phone instanceof HTMLInputElement) {
+      clearContactValidity(event.currentTarget);
+
+      if (!email.value.trim() && !phone.value.trim()) {
+        const message = "Укажите почту или телефон — достаточно одного способа связи.";
+
+        email.setCustomValidity(message);
+        phone.setCustomValidity(message);
+        setContactError(message);
+        setStatus("");
+        email.reportValidity();
+        email.focus();
+        return;
+      }
+
+      if (phone.value.trim()) {
+        const digitCount = phone.value.replace(/\D/g, "").length;
+
+        if (digitCount < 7 || digitCount > 15) {
+          const message = "Укажите корректный номер телефона: от 7 до 15 цифр.";
+
+          phone.setCustomValidity(message);
+          setContactError(message);
+          setStatus("");
+          phone.reportValidity();
+          phone.focus();
+          return;
+        }
+      }
+    }
+
+    setContactError("");
     setStatus(
       "Это демонстрационная форма: данные не отправлены. Рабочая отправка будет подключена позже.",
     );
   }
 
-  if (variant === "reference") {
-    const nameId = `${formId}-name`;
-    const companyId = `${formId}-company`;
-    const emailId = `${formId}-email`;
-    const phoneId = `${formId}-phone`;
-    const budgetId = `${formId}-budget`;
-    const descriptionId = `${formId}-description`;
+  function handleInput(event: FormEvent<HTMLFormElement>) {
+    setStatus("");
 
+    const target = event.target;
+
+    if (
+      target instanceof HTMLInputElement &&
+      (target.name === "email" || target.name === "phone")
+    ) {
+      clearContactValidity(event.currentTarget);
+      setContactError("");
+    }
+  }
+
+  if (variant === "reference") {
     return (
       <form
         className={cn("contact-reference-form", className)}
         onSubmit={handleSubmit}
-        onInput={() => setStatus("")}
+        onInput={handleInput}
       >
         <fieldset>
           <legend className="sr-only">Контактные данные и описание задачи</legend>
@@ -62,7 +123,7 @@ export function ContactForm({
             </label>
 
             <label className="contact-reference-field" htmlFor={companyId}>
-              <span>Компания*</span>
+              <span>Компания</span>
               <input
                 className={referenceFieldClassName}
                 id={companyId}
@@ -70,12 +131,11 @@ export function ContactForm({
                 type="text"
                 autoComplete="organization"
                 maxLength={160}
-                required
               />
             </label>
 
             <label className="contact-reference-field" htmlFor={emailId}>
-              <span>Корпоративная почта*</span>
+              <span>Почта</span>
               <input
                 className={referenceFieldClassName}
                 id={emailId}
@@ -83,12 +143,13 @@ export function ContactForm({
                 type="email"
                 autoComplete="email"
                 maxLength={254}
-                required
+                aria-describedby={`${contactMethodHintId}${contactError ? ` ${contactMethodErrorId}` : ""}`}
+                aria-invalid={contactError ? true : undefined}
               />
             </label>
 
             <label className="contact-reference-field" htmlFor={phoneId}>
-              <span>Телефон*</span>
+              <span>Телефон</span>
               <input
                 className={referenceFieldClassName}
                 id={phoneId}
@@ -98,9 +159,20 @@ export function ContactForm({
                 inputMode="tel"
                 minLength={7}
                 maxLength={40}
-                required
+                aria-describedby={`${contactMethodHintId}${contactError ? ` ${contactMethodErrorId}` : ""}`}
+                aria-invalid={contactError ? true : undefined}
               />
             </label>
+
+            <p className="contact-reference-contact-hint" id={contactMethodHintId}>
+              Укажите почту или телефон — достаточно одного способа связи.
+            </p>
+
+            {contactError ? (
+              <p className="contact-reference-error" id={contactMethodErrorId} role="alert">
+                {contactError}
+              </p>
+            ) : null}
 
             <label className="contact-reference-field" htmlFor={budgetId}>
               <span>Бюджет проекта</span>
@@ -124,7 +196,7 @@ export function ContactForm({
               className="contact-reference-field contact-reference-description"
               htmlFor={descriptionId}
             >
-              <span>Подробно опишите задачу*</span>
+              <span>Опишите задачу*</span>
               <textarea
                 className={cn(referenceFieldClassName, "resize-y")}
                 id={descriptionId}
@@ -198,14 +270,14 @@ export function ContactForm({
     <form
       className={cn("space-y-6", className)}
       onSubmit={handleSubmit}
-      onInput={() => setStatus("")}
+      onInput={handleInput}
     >
       <div className="grid gap-x-6 gap-y-5 md:grid-cols-2">
-        <label className="text-sm font-semibold" htmlFor="contact-name">
+        <label className="text-sm font-semibold" htmlFor={nameId}>
           Имя
           <input
             className={defaultFieldClassName}
-            id="contact-name"
+            id={nameId}
             name="name"
             type="text"
             autoComplete="name"
@@ -216,39 +288,39 @@ export function ContactForm({
           />
         </label>
 
-        <label className="text-sm font-semibold" htmlFor="contact-company">
+        <label className="text-sm font-semibold" htmlFor={companyId}>
           Компания
           <input
             className={defaultFieldClassName}
-            id="contact-company"
+            id={companyId}
             name="company"
             type="text"
             autoComplete="organization"
             maxLength={160}
             placeholder="Название компании"
-            required
           />
         </label>
 
-        <label className="text-sm font-semibold" htmlFor="contact-email">
-          Электронная почта
+        <label className="text-sm font-semibold" htmlFor={emailId}>
+          Почта
           <input
             className={defaultFieldClassName}
-            id="contact-email"
+            id={emailId}
             name="email"
             type="email"
             autoComplete="email"
             maxLength={254}
             placeholder="ваша@почта.рф"
-            required
+            aria-describedby={`${contactMethodHintId}${contactError ? ` ${contactMethodErrorId}` : ""}`}
+            aria-invalid={contactError ? true : undefined}
           />
         </label>
 
-        <label className="text-sm font-semibold" htmlFor="contact-phone">
+        <label className="text-sm font-semibold" htmlFor={phoneId}>
           Телефон
           <input
             className={defaultFieldClassName}
-            id="contact-phone"
+            id={phoneId}
             name="phone"
             type="tel"
             autoComplete="tel"
@@ -256,15 +328,26 @@ export function ContactForm({
             minLength={7}
             maxLength={40}
             placeholder="+7 900 000-00-00"
-            required
+            aria-describedby={`${contactMethodHintId}${contactError ? ` ${contactMethodErrorId}` : ""}`}
+            aria-invalid={contactError ? true : undefined}
           />
         </label>
 
-        <label className="text-sm font-semibold md:col-span-2" htmlFor="contact-project-type">
+        <p className="text-xs leading-5 text-muted-foreground md:col-span-2" id={contactMethodHintId}>
+          Укажите почту или телефон — достаточно одного способа связи.
+        </p>
+
+        {contactError ? (
+          <p className="text-sm leading-6 text-primary md:col-span-2" id={contactMethodErrorId} role="alert">
+            {contactError}
+          </p>
+        ) : null}
+
+        <label className="text-sm font-semibold md:col-span-2" htmlFor={projectTypeId}>
           Тип проекта
           <select
             className={defaultFieldClassName}
-            id="contact-project-type"
+            id={projectTypeId}
             name="projectType"
             defaultValue=""
             required
@@ -281,11 +364,11 @@ export function ContactForm({
         </label>
       </div>
 
-      <label className="block text-sm font-semibold" htmlFor="contact-description">
-        Расскажите о задаче
+      <label className="block text-sm font-semibold" htmlFor={descriptionId}>
+        Опишите задачу
         <textarea
           className={`${defaultFieldClassName} min-h-36 resize-y py-3`}
-          id="contact-description"
+          id={descriptionId}
           name="description"
           minLength={20}
           maxLength={1600}

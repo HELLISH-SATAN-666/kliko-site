@@ -1,79 +1,117 @@
+import { Github, Instagram, Linkedin, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const footerGroups = [
   {
-    title: "Компания",
+    title: "Услуги",
+    links: [
+      ["Разработка ПО", "/services"],
+      ["ИТ-консалтинг", "/services"],
+      ["Цифровые продукты", "/services"],
+    ],
+  },
+  {
+    title: "Технологии",
+    links: [
+      ["ИИ и данные", "/#technologies"],
+      ["Большие данные", "/#technologies"],
+      ["Аналитика данных", "/#technologies"],
+    ],
+  },
+  {
+    title: "Отрасли",
+    links: [
+      ["Финтех", "/projects"],
+      ["Ритейл", "/projects"],
+      ["Здравоохранение", "/projects"],
+    ],
+  },
+  {
+    title: "О компании",
     links: [
       ["О нас", "/about"],
       ["Проекты", "/projects"],
       ["Статьи", "/articles"],
     ],
   },
-  {
-    title: "Услуги",
-    links: [
-      ["Разработка", "/services"],
-      ["Тестирование", "/services"],
-      ["Поддержка", "/services"],
-    ],
-  },
-  {
-    title: "Контакты",
-    links: [
-      ["Форма обращения", "/contact"],
-      ["Почта — заглушка", "/contact"],
-      ["Телефон — заглушка", "/contact"],
-    ],
-  },
+] as const;
+
+const socialItems = [
+  { label: "LinkedIn — заглушка", Icon: Linkedin },
+  { label: "YouTube — заглушка", Icon: Youtube },
+  { label: "Telegram — заглушка", Icon: Send },
+  { label: "GitHub — заглушка", Icon: Github },
+  { label: "Instagram — заглушка", Icon: Instagram },
 ] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#252525] text-white">
-      <div className="site-container grid gap-12 py-16 md:grid-cols-[1.2fr_2fr] md:py-20">
-        <div>
-          <div className="inline-flex bg-white px-3 py-2">
-            <Image
-              src="/kliko-logo.svg"
-              alt="KLIKO"
-              width={525}
-              height={135}
-              className="h-auto w-[170px]"
-            />
-          </div>
-          <p className="body-copy mt-6 max-w-lg text-white/55">
-            Каркас описания компании. Финальный текст будет добавлен на этапе наполнения.
-          </p>
-        </div>
+    <footer className="site-footer">
+      <div className="site-container site-footer-container">
+        <h2 className="site-footer-title">
+          Создаём программные продукты вместе<span aria-hidden="true">!</span>
+        </h2>
 
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+        <div className="site-footer-main">
+          <div className="site-footer-contact">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span>Регион — заглушка</span>
+              <span className="site-footer-contact-value">Телефон — заглушка</span>
+            </div>
+            <span className="site-footer-contact-value">Почта для проектов — заглушка</span>
+            <span className="site-footer-contact-value">Общие вопросы — заглушка</span>
+            <span className="site-footer-contact-value">Карьера — заглушка</span>
+          </div>
+
           {footerGroups.map((group) => (
-            <div key={group.title}>
-              <h2 className="top-nav-type font-semibold uppercase tracking-[0.13em] text-white/45">
-                {group.title}
-              </h2>
-              <ul className="nav-type mt-6 space-y-3">
+            <nav key={group.title} aria-label={group.title}>
+              <h3 className="site-footer-group-title">{group.title}</h3>
+              <ul className="site-footer-links">
                 {group.links.map(([label, href]) => (
                   <li key={label}>
-                    <Link className="focus-ring text-white/75 transition-colors hover:text-white" href={href}>
+                    <Link className="focus-ring" href={href}>
                       {label}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
-      </div>
 
-      <div className="border-t border-white/10">
-        <div className="site-container flex flex-col gap-3 py-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 KLIKO. Демонстрационный каркас.</p>
-          <div className="flex gap-5">
-            <Link className="hover:text-white" href="/">Конфиденциальность</Link>
-            <Link className="hover:text-white" href="/">Правовая информация</Link>
+        <div className="site-footer-divider" />
+
+        <div className="site-footer-bottom">
+          <Link className="focus-ring inline-flex w-fit" href="/" aria-label="KLIKO — главная">
+            <Image
+              src="/kliko-logo-white.svg"
+              alt="KLIKO"
+              width={525}
+              height={135}
+              className="site-footer-logo"
+              unoptimized
+            />
+          </Link>
+
+          <div className="site-footer-legal">
+            <p>
+              © 2026 KLIKO. Все права защищены. {" "}
+              <span className="site-footer-legal-placeholder">Политика конфиденциальности</span>{" "}
+              <span className="site-footer-legal-placeholder">Файлы cookie</span>
+            </p>
+            <p>Юридический адрес — заглушка</p>
           </div>
+
+          <ul className="site-footer-socials" aria-label="Социальные сети">
+            {socialItems.map(({ label, Icon }) => (
+              <li key={label}>
+                <span role="img" aria-label={label} title={label}>
+                  <Icon aria-hidden="true" />
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
