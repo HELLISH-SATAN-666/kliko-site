@@ -6,7 +6,7 @@ import { ChatPlaceholder } from "@/components/chat-placeholder";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-import "./globals.css";
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["cyrillic", "latin"],

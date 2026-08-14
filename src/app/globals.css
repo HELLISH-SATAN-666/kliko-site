@@ -170,6 +170,110 @@ textarea {
   aspect-ratio: 1;
 }
 
+.article-richtext {
+  max-width: 850px;
+  margin-inline: auto;
+  color: var(--foreground);
+  font-size: 1.125rem;
+  line-height: 1.78;
+}
+
+.article-richtext > * + * {
+  margin-top: 2rem;
+}
+
+.article-richtext :is(h2, h3, h4) {
+  margin-top: 3.5rem;
+  font-family: var(--font-unbounded), Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.article-richtext h2 {
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  line-height: 1.25;
+}
+
+.article-richtext h3 {
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  line-height: 1.35;
+}
+
+.article-richtext :is(ul, ol) {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.75rem;
+}
+
+.article-richtext ul {
+  list-style: disc;
+}
+
+.article-richtext ul ::marker {
+  color: var(--primary);
+}
+
+.article-richtext ol {
+  list-style: decimal;
+}
+
+.article-richtext blockquote {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-left: 4px solid var(--primary);
+  background: var(--muted);
+  font-family: var(--font-unbounded), Arial, Helvetica, sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.article-richtext a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.article-richtext :is(img, video) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-richtext figure {
+  margin-block: 2.75rem;
+}
+
+.article-richtext figcaption {
+  margin-top: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.article-richtext table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.article-richtext :has(> table) {
+  overflow-x: auto;
+}
+
+.article-richtext :is(th, td) {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-richtext th {
+  background: var(--muted);
+  font-weight: 600;
+}
+
 .why-kliko-grid {
   display: grid;
   gap: 1rem;
@@ -517,6 +621,20 @@ textarea {
 .site-footer-legal-placeholder {
   color: #ffffff;
   font-weight: 500;
+}
+
+.site-footer-admin-link {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 32%);
+  text-underline-offset: 0.24em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.site-footer-admin-link:hover {
+  color: #ffffff;
+  text-decoration-color: var(--primary);
 }
 
 .site-footer-socials {

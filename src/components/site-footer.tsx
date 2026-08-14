@@ -100,7 +100,11 @@ export function SiteFooter() {
               <span className="site-footer-legal-placeholder">Политика конфиденциальности</span>{" "}
               <span className="site-footer-legal-placeholder">Файлы cookie</span>
             </p>
-            <p>Юридический адрес — заглушка</p>
+            <p>
+              <Link className="focus-ring site-footer-admin-link" href="/admin">
+                Защищённая админ-панель
+              </Link>
+            </p>
           </div>
 
           <ul className="site-footer-socials" aria-label="Социальные сети">

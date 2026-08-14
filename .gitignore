@@ -13,6 +13,7 @@
 .DS_Store
 Thumbs.db
 *.pem
+/public/media/
 
 # logs
 npm-debug.log*

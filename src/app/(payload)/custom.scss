@@ -1,0 +1,307 @@
+:root {
+  --kliko-accent: #007794;
+  --kliko-ink: #111214;
+  --kliko-muted: #62666d;
+  --kliko-surface: #ffffff;
+  --kliko-canvas: #f3f4f5;
+  --kliko-border: #dfe2e6;
+  --kliko-nav: #2a2a2a;
+  --font-body: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+}
+
+html[data-theme="light"] {
+  --theme-bg: var(--kliko-canvas);
+  --theme-text: var(--kliko-ink);
+  --theme-input-bg: var(--kliko-surface);
+  --theme-elevation-0: #ffffff;
+  --theme-elevation-50: #f8f9fa;
+  --theme-elevation-100: #f0f2f3;
+  --theme-elevation-150: #e7e9eb;
+  --theme-elevation-200: #dfe2e6;
+  --theme-elevation-300: #c8ccd0;
+  --theme-elevation-400: #9da3a9;
+  --theme-elevation-500: #747b82;
+  --theme-elevation-600: #5c6268;
+  --theme-elevation-700: #43484d;
+  --theme-elevation-800: #2a2e32;
+  --theme-elevation-900: #1b1e21;
+  --theme-elevation-1000: #111214;
+}
+
+body {
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--kliko-accent);
+  color: #ffffff;
+}
+
+:is(.dashboard, .collection-list, .collection-edit, .upload-collection) {
+  background: var(--kliko-canvas);
+}
+
+:is(.dashboard, .collection-list, .collection-edit) h1,
+:is(.dashboard, .collection-list, .collection-edit) h2,
+.kliko-admin-welcome h1 {
+  font-family: var(--font-unbounded), Unbounded, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.nav {
+  background: var(--kliko-nav);
+  color: #ffffff;
+}
+
+.nav :is(a, button),
+.nav .nav-group__toggle {
+  color: rgb(255 255 255 / 70%);
+}
+
+.nav :is(a, button):hover,
+.nav :is(a, button):focus-visible,
+.nav .nav__link--active {
+  color: #ffffff;
+}
+
+.nav .nav__link--active {
+  background: rgb(255 255 255 / 8%);
+  box-shadow: inset 3px 0 0 var(--kliko-accent);
+}
+
+.nav .nav-group__label,
+.nav .nav-group__toggle {
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.kliko-admin-logo {
+  display: inline-flex;
+  width: min(220px, 62vw);
+  align-items: center;
+}
+
+.kliko-admin-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.kliko-admin-mark {
+  display: block;
+  width: 39px;
+  height: 34px;
+  overflow: hidden;
+}
+
+.kliko-admin-mark img {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: 34px;
+}
+
+.kliko-admin-welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(250px, 0.75fr);
+  gap: 1px;
+  overflow: hidden;
+  margin: 0 0 2.5rem;
+  border: 1px solid var(--kliko-border);
+  background: var(--kliko-border);
+}
+
+.kliko-admin-welcome__copy,
+.kliko-admin-welcome__guide {
+  background: var(--kliko-surface);
+}
+
+.kliko-admin-welcome__copy {
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.kliko-admin-welcome__eyebrow {
+  margin: 0 0 1.25rem;
+  color: var(--kliko-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+}
+
+.kliko-admin-welcome h1 {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--kliko-ink);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.16;
+}
+
+.kliko-admin-welcome__copy > p:not(.kliko-admin-welcome__eyebrow) {
+  max-width: 690px;
+  margin: 1.5rem 0 0;
+  color: var(--kliko-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.kliko-admin-welcome__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.kliko-admin-welcome__actions a {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.kliko-admin-welcome__primary {
+  border: 1px solid var(--kliko-accent);
+  background: var(--kliko-accent);
+  color: #ffffff;
+}
+
+.kliko-admin-welcome__primary:hover,
+.kliko-admin-welcome__primary:focus-visible {
+  border-color: var(--kliko-ink);
+  background: var(--kliko-ink);
+  color: #ffffff;
+}
+
+.kliko-admin-welcome__secondary {
+  border: 1px solid var(--kliko-border);
+  background: #ffffff;
+  color: var(--kliko-ink);
+}
+
+.kliko-admin-welcome__secondary:hover,
+.kliko-admin-welcome__secondary:focus-visible {
+  border-color: var(--kliko-accent);
+  color: var(--kliko-accent);
+}
+
+.kliko-admin-welcome__guide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(2rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 90% 8%, rgb(0 119 148 / 20%), transparent 42%),
+    linear-gradient(145deg, #eff8fa 0%, #ffffff 62%);
+}
+
+.kliko-admin-welcome__guide > p {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--kliko-ink);
+  font-family: var(--font-unbounded), Unbounded, Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.kliko-admin-welcome__guide ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 3rem 0 0;
+  padding: 0;
+  color: var(--kliko-muted);
+  list-style: none;
+}
+
+.kliko-admin-welcome__guide li {
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1.45;
+}
+
+.kliko-admin-welcome__guide li::before {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--kliko-accent);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.kliko-admin-nav-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.kliko-admin-nav-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.kliko-admin-nav-footer a:hover,
+.kliko-admin-nav-footer a:focus-visible {
+  color: #ffffff;
+}
+
+.btn--style-primary {
+  border-color: var(--kliko-accent);
+  background: var(--kliko-accent);
+  color: #ffffff;
+}
+
+.btn--style-primary:hover,
+.btn--style-primary:focus-visible {
+  border-color: var(--kliko-ink);
+  background: var(--kliko-ink);
+}
+
+:is(input, textarea, select):focus,
+.field-type:focus-within {
+  --theme-elevation-400: var(--kliko-accent);
+}
+
+.rich-text-lexical,
+.lexical-editor {
+  background: #ffffff;
+}
+
+.rich-text-lexical :is(.fixed-toolbar, .toolbar-popup) {
+  border-color: var(--kliko-border);
+  background: #f8f9fa;
+}
+
+.card {
+  border-color: var(--kliko-border);
+  background: var(--kliko-surface);
+  box-shadow: none;
+}
+
+.card:hover {
+  border-color: var(--kliko-accent);
+}
+
+@media (max-width: 900px) {
+  .kliko-admin-welcome {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kliko-admin-welcome__actions a {
+    transition: none;
+  }
+}
